@@ -11,9 +11,9 @@ class ResponsiveLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < ESizes.mobile) {
-          return const MobileLayout();
+          return const DesktopLayout();
         } else if (constraints.maxWidth < ESizes.tablet) {
-          return const TabletLayout();
+          return const DesktopLayout();
         } else {
           return const DesktopLayout();
         }

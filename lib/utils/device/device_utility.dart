@@ -72,6 +72,10 @@ class EDeviceUtils {
         defaultTargetPlatform == TargetPlatform.iOS;
   }
 
+  static Future<bool> isLinux() async {
+    return defaultTargetPlatform == TargetPlatform.linux;
+  }
+
   static void vibrate(Duration duration) {
     HapticFeedback.vibrate();
     Future.delayed(duration, () => HapticFeedback.vibrate());

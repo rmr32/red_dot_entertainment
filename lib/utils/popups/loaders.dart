@@ -1,4 +1,5 @@
 import 'package:red_dot_entertainment/common/widgets/buttons/on_hover_button.dart';
+import 'package:red_dot_entertainment/features/home/widgets/hero_buttons.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/helpers.dart/helper_functions.dart';
 
@@ -10,20 +11,56 @@ class ELoaders {
     showDialog(
       context: Get.context!,
       barrierColor: EColors.primary.withOpacity(EStyle.colorBlockOpacity),
-      builder: (context) => AlertDialog(
-        backgroundColor: EColors.secondary,
-        title: Text(title),
-        content: TextField(
-          decoration: InputDecoration(hintText: hint),
+      builder: (context) => Container(
+        // color: EColors.primary.withOpacity(0.3),
+        margin: const EdgeInsets.all(200),
+        decoration: BoxDecoration(
+          color: EColors.primary.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: EColors.secondary, width: 2),
         ),
-        // actions: [TextButton(onPressed: null, child: Text(buttonText))],
-        actions: [
-          OnHoverButton(
-            controllerKey: '6',
-            text: buttonText,
-            onPressed: () => Navigator.of(context).pop(),
-          )
-        ],
+        child: AlertDialog(
+          insetPadding: const EdgeInsets.all(00),
+          // contentPadding: const EdgeInsets.all(200),
+          // backgroundColor: EColors.primary.withOpacity(0.7),
+          backgroundColor: Colors.transparent,
+          title: Text(
+            title,
+            style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                  color: EColors.secondary,
+                  fontSize: ESizes.fontSizeHeadline,
+                ),
+          ),
+          content: TextField(
+            showCursor: true,
+            cursorColor: EColors.secondary,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: EColors.secondary),
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: EColors.secondary),
+              // labelText: 'Enter for a discount',
+              // labelStyle: Theme.of(context)
+              //     .textTheme
+              //     .bodyLarge!
+              //     .copyWith(color: EColors.secondary),
+            ),
+          ),
+          // actions: [TextButton(onPressed: null, child: Text(buttonText))],
+          actions: [
+            const EHeroButton(),
+            OnHoverButton(
+              controllerKey: '6',
+              text: buttonText,
+              onPressed: () => Navigator.of(context).pop(),
+            )
+          ],
+        ),
       ),
     );
   }

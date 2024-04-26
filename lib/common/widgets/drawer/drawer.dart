@@ -48,7 +48,7 @@ class EDrawer extends StatelessWidget {
                   ENavTiles(
                     navPage: EText.book,
                     onPressed: () {
-                      EDeviceUtils.launchUrl(EText.calendly);
+                      // EDeviceUtils.launchUrl(EText.calendly);
                     },
                   ),
                 ],

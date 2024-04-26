@@ -17,6 +17,7 @@ class EAppTheme {
     checkboxTheme: ECheckboxTheme.lightCheckBoxTheme,
     bottomSheetTheme: EBottomSheetTheme.lightBottomSheetTheme,
     elevatedButtonTheme: EElevatedButtonTheme.lightElevatedButtonTheme,
+
     outlinedButtonTheme: EOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: ETextFormFieldTheme.lightInputDecorationTheme,
     sliderTheme: ESliderTheme.lightSliderTheme,

@@ -28,20 +28,23 @@ class OnHoverIcon extends StatelessWidget {
           onHover: (value) {},
           onPressed: onPressed,
           style: ButtonStyle(
-            elevation: MaterialStateProperty.all<double>(0),
-            padding:
-                MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
+            shape:
+                MaterialStateProperty.all<OutlinedBorder>(const CircleBorder()),
+            elevation: MaterialStateProperty.all<double>(5),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                const EdgeInsets.all(18)),
             animationDuration: const Duration(seconds: 1),
             side: MaterialStateProperty.all(BorderSide.none),
-            backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.transparent),
+            backgroundColor: controller.isHovered[controllerKey]?.value ?? false
+                ? MaterialStateProperty.all<Color>(Colors.red)
+                : MaterialStateProperty.all<Color>(Colors.white),
           ),
           child: Icon(
-            size: 20,
+            size: 25,
             icon.icon,
             color: color ??
                 (controller.isHovered[controllerKey]?.value ?? false
-                    ? EColors.accent
+                    ? EColors.secondary
                     : EColors.primary),
           ),
         ),

@@ -17,6 +17,7 @@ class EText {
   static const String price = 'Pricing';
   static const String beats = 'Beats';
   static const String gallery = 'Gallery';
+  static const String store = 'Merch';
   static const String book = 'Book';
 
   /// --- Social Media Text --- ///
@@ -30,7 +31,12 @@ class EText {
   static const String instagramLink = 'https://www.instagram.com/red.dot.ent/';
   static const String twitchLink = 'https://www.twitch.com';
   static const String youtubeLink = 'https://www.youtube.com';
-  static const String calendly = 'https://calendly.com/info-egkm/30min';
+  static const String bookOne =
+      'https://calendly.com/reddottent/one-hour-session';
+  static const String bookEight =
+      'https://calendly.com/reddottent/eight-hour-session';
+  static const String bookFour =
+      'https://calendly.com/reddottent/four-hour-session';
 
   /// --- Hero Tags --- ///
   // static const String heroLogo = 'Logo';
@@ -38,12 +44,15 @@ class EText {
   /// --- Home Screen Text --- ///
   ///
   ///
-  static const String homeTagline1 = 'No limits, no boundaries.';
-  static const String homeTagline2 = 'Just a perfect space to create.';
+  static const String homeTagline1 = 'No limits,';
+  static const String homeTagline2 = 'no boundaries.';
+  static const String homeTagline3 = 'Just a perfect space to create.';
   static const String homePricing = 'Low rates at \$60/HR';
   static const String homeCta = 'Book now';
   static const String homeSubtext =
       'Based in Austin, Texas, we specialize in offering recording, mixing, mastering, and beat production services at cost-effective prices.';
+  static const String homeSubtext2 =
+      'We specialize in all aspects of audio engineering and music production. Located in Austin, Texas, our studio provides you with the tools to bring your musical visions to life. Our team takes great pride in crafting music that keep you inspired and motivated. Red Dot Entertainment is driven by a commitment to help you reach your artist goals.';
 
   /// --- About Screen Text --- ///
   ///
@@ -85,9 +94,6 @@ class EText {
   ///
   static const String buttonSubmit = 'Submit';
 
-  /// --- Database --- ///
-  static const String results = 'results';
-
   /// --- Audio Text --- ///
   static const String audioJD = 'JxD (RED DOT ENTERTAINMENT)';
   static const String audioBlocBoy = "Bloc Boy Type Beat";
@@ -96,4 +102,35 @@ class EText {
   static const String audioLilDurkLilBaby = 'Lil Durk Lil Baby Type Beat';
   static const String audioRoddyRicch = 'Roddy Ricch Type Beat';
   static const String audioSir = 'SiR Type Beat';
+
+  /// ------------------------------------------------------------------ ///
+  /// --- DATABASE TEXT --- ///
+  ///
+  ///
+
+  /// --- Cart Model --- ///
+  static const String dbCartModelProductId = 'productId';
+  static const String dbCartModelTitle = 'title';
+  static const String dbCartModelPrice = 'price';
+  static const String dbCartModelImage = 'image';
+  static const String dbCartModelQuantity = 'quantity';
+  static const String dbCartModelVariationId = 'variationId';
+  static const String dbCartModelBrandName = 'brandName';
+  static const String dbCartModelSelectedVariation = 'selectedVariation';
+
+  /// --- Order Model --- ///
+  static const String dbOrderDelivered = 'Delivered';
+  static const String dbOrderEnRoute = 'Shipment on the way';
+  static const String dbOrderProcessing = 'Processing';
+  static const String dbOrderId = 'id';
+  static const String dbOrderUserId = 'userId';
+  static const String dbOrderStatus = 'status';
+  static const String dbOrderTotalAmount = 'totalAmount';
+  static const String dbOrderDate = 'orderDate';
+  static const String dbOrderPaymentMethod = 'paymentMethod';
+  static const String dbOrderAddress = 'address';
+  static const String dbOrderDeliveryDate = 'deliverDate';
+  static const String dbOrderItems = 'items';
+  static const String dbOrderEmpty = 'Whoops! No Orders Yet!';
+  static const String dbOrderFill = 'Let\'s fill it.';
 }

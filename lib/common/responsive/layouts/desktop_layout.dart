@@ -1,193 +1,21 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_animate/flutter_animate.dart';
-// import 'package:lottie/lottie.dart';
-
-// import 'package:red_dot_ent/common/widgets/drawer/widgets/nav_list_tiles.dart';
-// import 'package:red_dot_ent/common/widgets/icons/on_hover_icon.dart';
-// import 'package:red_dot_ent/common/widgets/fab/floating_action_button.dart';
-// import 'package:red_dot_ent/features/home/hero_screen.dart';
-// import 'package:red_dot_ent/features/music/player_screen.dart';
-// import 'package:red_dot_ent/features/music/producer_screen.dart';
-// import 'package:red_dot_ent/features/pricing/pricing_screen.dart';
-// import 'package:red_dot_ent/utils/constants/exports.dart';
-// import 'package:red_dot_ent/utils/constants/icons.dart';
-
-// import 'package:widget_mask/widget_mask.dart';
-
-// class DesktopLayout extends StatefulWidget {
-//   const DesktopLayout({super.key});
-
-//   @override
-//   State<DesktopLayout> createState() => _DesktopLayoutState();
-// }
-
-// class _DesktopLayoutState extends State<DesktopLayout> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final controller = NavigationController.instance;
-
-//     // final VideoController videoController = Get.put(VideoController());
-// //     return Scaffold(
-// //       backgroundColor: EColors.primary,
-// //       floatingActionButton: const EFloatingActionButton(),
-// //       body: NestedScrollView(
-// //         // floatHeaderSlivers: true, // To have appbar reappear immediateley
-// //         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-// //           SliverAppBar(
-// //             backgroundColor: Colors.transparent,
-// //             elevation: 5,
-// //             forceElevated: innerBoxIsScrolled,
-// //             // bottom: PreferredSize(
-// //             //     preferredSize: const Size.fromHeight(10),
-// //             //     child: Container()),
-// //             title: Padding(
-// //               padding: const EdgeInsets.only(top: 15.0),
-// //               child: Image.asset(
-// //                 EImages.logo,
-// //                 height: 70,
-// //                 fit: BoxFit.cover,
-// //               ),
-// //             ),
-// //             floating: true,
-// //             snap: true,
-// //             centerTitle: true,
-// //             expandedHeight: 100,
-// //             flexibleSpace: FlexibleSpaceBar(
-// //               background: Container(
-// //                 decoration: const BoxDecoration(
-// //                     gradient: LinearGradient(colors: [
-// //                   EColors.accent,
-
-// //                   // Theme.of(context).scaffoldBackgroundColor
-// //                   Colors.transparent
-// //                 ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-// //               ),
-// //             ),
-
-// //             /// --- TabBar --- ///
-// //             /// If Using TabBar, wrap Scaffold with DefaultTabController and add length: tab#
-// //             /// Also, wrap your body in a TabBarView with children of 'views'
-// //             /// https://www.youtube.com/watch?v=xzPXqQ-Pe2g
-// //             // pinned: true // Keeps the tabbar sticky
-// //             // bottom: TabBar(
-// //             //   tabs: [
-// //             //     Tab(
-// //             //       icon: EIcons.instagram,
-// //             //     ),
-// //             //     Tab(
-// //             //       icon: EIcons.instagram,
-// //             //     )
-// //             //   ],
-// //             // ),
-// //           ),
-// //         ],
-
-// /// --- Original Code Below --- ///
-// ///
-// // class DesktopLayout extends StatefulWidget {
-// //   const DesktopLayout({super.key});
-
-// //   @override
-// //   State<DesktopLayout> createState() => _DesktopLayoutState();
-// // }
-
-// // class _DesktopLayoutState extends State<DesktopLayout> {
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     final controller = NavigationController.instance;
-// //     return LayoutBuilder(
-// //       builder: (context, constraints) {
-// //         double height = EDeviceUtils.getScreenHeight();
-// //         double width = EDeviceUtils.getScreenWidth();
-// //         return Scaffold(
-// //           backgroundColor: Theme.of(context).colorScheme.background,
-// //           floatingActionButton: const EFloatingActionButton(),
-// //           body: Container(
-// //             constraints: const BoxConstraints.expand(),
-// //             decoration: BoxDecoration(
-// //               image: DecorationImage(
-// //                 colorFilter: ColorFilter.mode(
-// //                     EColors.primary.withOpacity(EStyle.colorBlockOpacity),
-// //                     BlendMode.darken),
-// //                 image: const AssetImage(EImages.bg),
-// //                 fit: BoxFit.cover,
-// //               ),
-// //             ),
-// //             child: Row(
-// //               mainAxisAlignment: MainAxisAlignment.start,
-// //               crossAxisAlignment: CrossAxisAlignment.start,
-// //               children: [
-// //                 /// --- Navigation --- ///
-// //                 const Expanded(
-// //                   flex: 2,
-// //                   child: EDrawer(isRounded: false),
-// //                 ),
-
-// //                 /// --- Content --- ///
-// //                 Expanded(
-// //                   flex: 4,
-// //                   child: Column(
-// //                     mainAxisAlignment: MainAxisAlignment.start,
-// //                     crossAxisAlignment: CrossAxisAlignment.start,
-// //                     children: [
-// //                       Container(
-// //                         color: EColors.tertiary
-// //                             .withOpacity(EStyle.colorBlockOpacity),
-// //                         height: height,
-// //                         width: double.infinity,
-// //                         child: Padding(
-// //                           padding: const EdgeInsets.all(30.0),
-// //                           child: Center(
-// //                             child: Column(
-// //                               mainAxisAlignment: MainAxisAlignment.center,
-// //                               crossAxisAlignment: CrossAxisAlignment.center,
-// //                               children: [
-// //                                 Obx(
-// //                                   () {
-// //                                     switch (controller.currentPage.value) {
-// //                                       case 0:
-// //                                         return const HomeScreen();
-// //                                       case 1:
-// //                                         return const AboutScreen2();
-
-// //                                       case 2:
-// //                                         return const PricingScreen();
-// //                                       case 3:
-// //                                         return const PlayerScreen();
-// //                                       case 4:
-// //                                         return GalleryScreen();
-// //                                       case 5:
-// //                                         return const ReservationScreen();
-// //                                       default:
-// //                                         return Container();
-// //                                     }
-// //                                   },
-// //                                 ),
-// //                               ],
-// //                             ),
-// //                           ),
-// //                         ),
-// //                       ),
-// //                     ],
-// //                   ),
-// //                 ),
-// //                 const Spacer(
-// //                   flex: 3,
-// //                 ),
-// //               ],
-// //             ),
-// //           ),
-// //         );
-// //       },
-// //     );
-// //   }
-// // }
-
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hovering/hovering.dart';
 import 'package:lottie/lottie.dart';
 import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
 import 'package:red_dot_entertainment/common/widgets/fab/floating_action_button.dart';
+import 'package:red_dot_entertainment/features/about/about_screen.dart';
+import 'package:red_dot_entertainment/features/contact/contact_screen.dart';
+import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
 import 'package:red_dot_entertainment/features/home/hero_screen.dart';
+import 'package:red_dot_entertainment/features/home/widgets/hero_video.dart';
+import 'package:red_dot_entertainment/features/music/music_screen.dart';
+import 'package:red_dot_entertainment/features/store/store_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
+import 'package:red_dot_entertainment/utils/device/device_utility.dart';
 import 'package:widget_mask/widget_mask.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -195,10 +23,22 @@ class DesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    final ScrollController scrollController = ScrollController();
+    GlobalKey homeKey = GlobalKey();
+    GlobalKey aboutKey = GlobalKey();
+    GlobalKey galleryKey = GlobalKey();
+    GlobalKey musicKey = GlobalKey();
+    GlobalKey storeKey = GlobalKey();
+
     return Scaffold(
       floatingActionButton: const EFloatingActionButton(),
       body: CustomScrollView(
+        controller: scrollController,
         slivers: [
+          /// --- SLIVER APPBAR ---///
           SliverAppBar(
             floating: true,
             snap: true,
@@ -207,97 +47,267 @@ class DesktopLayout extends StatelessWidget {
               collapseMode: CollapseMode.parallax,
               background: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 50.0, vertical: 10),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(EText.home,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(color: EColors.secondary)),
-                          const SizedBox(
-                            width: ESizes.spaceBtwSections,
-                          ),
-                          Text(EText.about,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(color: EColors.secondary)),
-                        ],
-                      ),
+                    const EdgeInsets.symmetric(horizontal: 00.0, vertical: 00),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        EColors.primary,
+                        EColors.primary,
+                        EColors.primary.withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                      stops: const [
+                        0.0,
+                        0.3,
+                        0.7,
+                        0.9,
+                      ],
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        // decoration: const BoxDecoration(
-                        //   gradient: RadialGradient(
-                        //     colors: [
-                        //       EColors.secondary,
-                        //       Colors.transparent,
-                        //     ],
-                        //     stops: [
-                        //       0.0,
-                        //       0.5,
-                        //     ],
-                        //     center: Alignment.center,
-                        //     radius: 1,
-                        //     focal: Alignment.center,
-                        //     focalRadius: 0.1,
-                        //   ),
-                        // ),
-                        child: const Image(
-                          image: AssetImage(
-                            EImages.logoWhite,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              // /// --- HOME NAVIGATION --- ///
+                              // HoverButton(
+                              //   onpressed: () {
+                              //     Scrollable.ensureVisible(
+                              //       homeKey.currentContext!,
+                              //       duration: const Duration(milliseconds: 500),
+                              //       curve: Curves.easeInOut,
+                              //       alignment: 1.0,
+                              //     );
+                              //   },
+                              //   textColor: EColors.secondary,
+                              //   hoverTextColor: EColors.accent,
+                              //   padding: EdgeInsets.zero,
+                              //   hoverPadding: EdgeInsets.zero,
+                              //   child: const Text(
+                              //     EText.home,
+                              //     textAlign: TextAlign.center,
+                              //     style: TextStyle(
+                              //         fontSize: ESizes.fontSizeHeadline),
+                              //   ),
+                              // ),
+                              // const SizedBox(
+                              //   width: ESizes.spaceBtwSections,
+                              // ),
+
+                              /// --- ABOUT NAVIGATION --- ///
+                              HoverButton(
+                                onpressed: () {
+                                  Scrollable.ensureVisible(
+                                    aboutKey.currentContext!,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                    alignment: 0.5,
+                                  );
+                                },
+                                textColor: EColors.secondary,
+                                hoverTextColor: EColors.accent,
+                                padding: EdgeInsets.zero,
+                                hoverPadding: EdgeInsets.zero,
+                                child: const Text(
+                                  EText.about,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: ESizes.fontSizeHeadline),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: ESizes.spaceBtwSections,
+                              ),
+
+                              /// --- GALLERY NAVIGATION --- ///
+                              HoverButton(
+                                onpressed: () {
+                                  Scrollable.ensureVisible(
+                                    galleryKey.currentContext!,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                    alignment: 0.5,
+                                  );
+                                },
+                                textColor: EColors.secondary,
+                                hoverTextColor: EColors.accent,
+                                padding: EdgeInsets.zero,
+                                hoverPadding: EdgeInsets.zero,
+                                child: const Text(
+                                  EText.gallery,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: ESizes.fontSizeHeadline),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: ESizes.spaceBtwSections,
+                              ),
+                            ],
                           ),
-                          fit: BoxFit.contain,
                         ),
-                      ),
+
+                        /// --- LOGO ---
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: () {
+                              Scrollable.ensureVisible(
+                                homeKey.currentContext!,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                                alignment: 1.0,
+                              );
+                            },
+                            child: Container(
+                              // decoration: const BoxDecoration(
+                              //   gradient: RadialGradient(
+                              //     colors: [
+                              //       EColors.secondary,
+                              //       Colors.transparent,
+                              //     ],
+                              //     stops: [
+                              //       0.0,
+                              //       0.5,
+                              //     ],
+                              //     center: Alignment.center,
+                              //     radius: 1,
+                              //     focal: Alignment.center,
+                              //     focalRadius: 0.1,
+                              //   ),
+                              // ),
+                              child: const Image(
+                                image: AssetImage(
+                                  EImages.logoWhite,
+                                ),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                            flex: 1,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const SizedBox(
+                                  width: ESizes.spaceBtwSections,
+                                ),
+
+                                /// --- STORE NAVIGATION --- ///
+                                HoverButton(
+                                  onpressed: () {
+                                    Scrollable.ensureVisible(
+                                      storeKey.currentContext!,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut,
+                                      alignment: 0.5,
+                                    );
+                                  },
+                                  textColor: EColors.secondary,
+                                  hoverTextColor: EColors.accent,
+                                  padding: EdgeInsets.zero,
+                                  hoverPadding: EdgeInsets.zero,
+                                  child: const Text(
+                                    EText.store,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: ESizes.fontSizeHeadline),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: ESizes.spaceBtwSections,
+                                ),
+
+                                /// --- MUSIC NAVIGATION --- ///
+                                HoverButton(
+                                  onpressed: () {
+                                    Scrollable.ensureVisible(
+                                      musicKey.currentContext!,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut,
+                                      alignment: 0.5,
+                                    );
+                                  },
+                                  textColor: EColors.secondary,
+                                  hoverTextColor: EColors.accent,
+                                  padding: EdgeInsets.zero,
+                                  hoverPadding: EdgeInsets.zero,
+                                  child: const Text(
+                                    EText.beats,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: ESizes.fontSizeHeadline),
+                                  ),
+                                ),
+                              ],
+                            ))
+                      ],
                     ),
-                    const Expanded(flex: 1, child: SizedBox())
-                  ],
+                  ),
                 ),
               ),
             ),
           ),
-          const SliverToBoxAdapter(
-            child: HeroScreen(),
+          SliverToBoxAdapter(
+            key: homeKey,
+            child: const HeroScreen(),
           ),
           SliverToBoxAdapter(
-            child: WidgetMask(
-              blendMode: BlendMode.srcATop,
-              childSaveLayer: true,
-              mask: Image.asset(
-                EImages.bg,
-                fit: BoxFit.cover,
-                height: 300,
-              ),
-              child: Image.asset(
-                'assets/images/soundwave_large.gif',
-                height: 300,
-              ),
-            ),
+            key: aboutKey,
+            child: const AboutScreen(),
           ),
+
+          // SliverToBoxAdapter(
+          //   child: Lottie.asset('assets/animations/soundwave.json',
+          //       width: double.infinity, height: 300),
+          // ),
+          // SliverToBoxAdapter(
+          //   child: Opacity(
+          //     opacity: 0.5,
+          //     child: WidgetMask(
+          //       blendMode: BlendMode.srcATop,
+          //       childSaveLayer: true,
+          //       mask: Image.asset(
+          //         EImages.bg,
+          //         fit: BoxFit.cover,
+          //       ),
+          //       child: Image.asset(
+          //         EImages.logo,
+          //         height: 600,
+          //         fit: BoxFit.contain,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           SliverToBoxAdapter(
-            child: Lottie.asset('assets/animations/soundwave.json',
-                width: double.infinity, height: 300),
+            key: galleryKey,
+            child: GalleryScreen(),
           ),
+
           SliverToBoxAdapter(
-            child: WidgetMask(
-              blendMode: BlendMode.srcATop,
-              childSaveLayer: true,
-              mask: Image.asset(EImages.bg),
-              child: Image.asset(
-                EImages.logo,
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: SizedBox(
+                height: 400, width: width, child: const ContactScreen()),
+          ),
+          // SliverToBoxAdapter(
+          //   key: storeKey,
+          //   child: const StoreScreen(),
+          // ),
+          SliverToBoxAdapter(
+            key: musicKey,
+            child: const MusicScreen(),
           ),
         ],
       ),

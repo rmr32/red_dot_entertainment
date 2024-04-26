@@ -1,5 +1,5 @@
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class EHelperFunctions {
   // static Color? getColor(String value) {
@@ -35,10 +35,10 @@ class EHelperFunctions {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  // static String getFormattedDate(DateTime date,
-  //     {String format = 'dd MMM yyyy'}) {
-  //   return DateFormat(format).format(date);
-  // }
+  static String getFormattedDate(DateTime date,
+      {String format = 'dd MMM yyyy'}) {
+    return DateFormat(format).format(date);
+  }
 
   static String getFormattedTime(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, '0');

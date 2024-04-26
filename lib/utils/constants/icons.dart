@@ -11,14 +11,30 @@ class EIcons {
 
   /// --- Social Media Icons --- ///
   static const Icon twitch = Icon(FontAwesomeIcons.twitch);
+  static const Icon twitchHover = Icon(
+    FontAwesomeIcons.twitch,
+    color: EColors.accent,
+  );
   // FaIcon(FontAwesomeIcons.twitch, color: EColors.secondary);
   static const Icon youtube = Icon(FontAwesomeIcons.youtube);
+  static const Icon youtubeHover = Icon(
+    FontAwesomeIcons.youtube,
+    color: EColors.accent,
+  );
   // FaIcon(FontAwesomeIcons.youtube, color: EColors.secondary);
   static const Icon instagram = Icon(FontAwesomeIcons.instagram);
+  static const Icon instagramHover = Icon(
+    FontAwesomeIcons.instagram,
+    color: EColors.accent,
+  );
   // FaIcon(FontAwesomeIcons.instagram, color: EColors.secondary);
 
   /// --- Newsletter Icons --- ///
   static const Icon newsletter = Icon(FontAwesomeIcons.envelope);
+  static const Icon newsletterHover = Icon(
+    FontAwesomeIcons.envelope,
+    color: EColors.accent,
+  );
   // FaIcon(FontAwesomeIcons.newspaper, color: EColors.secondary);
 
   /// --- Audio Player Icons --- ///

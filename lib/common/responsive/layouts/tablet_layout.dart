@@ -21,7 +21,7 @@ class _TabletLayoutState extends State<TabletLayout> {
         double width = EDeviceUtils.getScreenWidth();
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
-          floatingActionButton: const EFloatingActionButton(),
+          // floatingActionButton: const EFloatingActionButton(),
           body: Container(
             constraints: const BoxConstraints.expand(),
             decoration: BoxDecoration(

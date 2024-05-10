@@ -20,7 +20,7 @@ class PlayControls extends StatelessWidget {
             width < ESizes.mobile
                 ? const SizedBox.shrink()
                 : ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(ESizes.borderRadiusSM),
                     child: Obx(
                       () => Image.asset(
                         playlistController

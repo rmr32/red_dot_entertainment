@@ -1,7 +1,10 @@
+import 'package:red_dot_entertainment/common/controllers/scroll_controller.dart';
+import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 
 class NavigationController extends GetxController {
   static NavigationController get instance => Get.find();
+  // final CustomScrollController scrollController = Get.find();
 
   GlobalKey home = GlobalKey();
   GlobalKey about = GlobalKey();
@@ -9,11 +12,49 @@ class NavigationController extends GetxController {
   GlobalKey music = GlobalKey();
   GlobalKey store = GlobalKey();
   GlobalKey contact = GlobalKey();
+  // RxDouble targetTop = 0.0.obs;
+
+  late final List<GlobalKey> targetKeys = [
+    home,
+    about,
+    gallery,
+    music,
+    store,
+    contact,
+  ];
+  final RxList<double> widgetOffsets = <double>[].obs;
+
   var currentPage = 0.obs;
 
-  void changePage(int index) {
-    currentPage.value = index;
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    // getGlobalKeyOffset();
+    // changePage();
   }
+
+  // void getGlobalKeyOffset() {
+  //   for (GlobalKey key in targetKeys) {
+  //     RenderBox? renderObject =
+  //         key.currentContext?.findRenderObject() as RenderBox;
+  //     Offset targetOffset = renderObject.localToGlobal(Offset.zero);
+  //     double targetTop =
+  //         (targetOffset.dy - 0); // If using appbar, subtract appbar height
+  //     widgetOffsets.add(targetTop);
+  //     print(widgetOffsets);
+  //   }
+  // }
+
+  // void changePage() {
+  //   double scrollPosition = scrollController.scrollPosition.toDouble();
+  //   if (scrollPosition >= widgetOffsets[1] &&
+  //       scrollPosition < widgetOffsets[2]) {
+  //     currentPage = 1.obs;
+  //   } else {
+  //     currentPage = 2.obs;
+  //   }
+  // }
 
   void scrollPage(int index) {
     Scrollable.ensureVisible(

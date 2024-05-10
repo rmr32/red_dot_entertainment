@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hovering/hovering.dart';
 import 'package:lottie/lottie.dart';
 import 'package:red_dot_entertainment/common/controllers/navigation_controller.dart';
+import 'package:red_dot_entertainment/common/controllers/scroll_controller.dart';
 import 'package:red_dot_entertainment/common/responsive/layouts/tablet_layout.dart';
 import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
 import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
@@ -30,18 +31,13 @@ class MobileLayout extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    final ScrollController scrollController = ScrollController();
-    final NavigationController controller = Get.find();
-    // GlobalKey homeKey = GlobalKey();
-    // GlobalKey aboutKey = GlobalKey();
-    // GlobalKey galleryKey = GlobalKey();
-    // GlobalKey musicKey = GlobalKey();
-    // GlobalKey storeKey = GlobalKey();
+    final NavigationController navController = Get.find();
+    final CustomScrollController scrollController = Get.find();
 
     return Scaffold(
       floatingActionButton: const EFloatingActionButton(),
       drawer: EDrawer(
-        navKey: controller.about,
+        navKey: navController.about,
         // homeKey: homeKey,
         // aboutKey: aboutKey,
         // galleryKey: galleryKey,
@@ -49,15 +45,15 @@ class MobileLayout extends StatelessWidget {
         // storeKey: storeKey,
       ),
       body: CustomScrollView(
-        controller: scrollController,
+        controller: scrollController.scrollController,
         slivers: [
           /// --- SLIVER APPBAR ---///
           SliverAppBar(
             elevation: 0,
-            automaticallyImplyLeading: false,
+            automaticallyImplyLeading: true,
             floating: true,
             snap: true,
-            expandedHeight: 50,
+            expandedHeight: 75,
             backgroundColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.parallax,
@@ -95,31 +91,19 @@ class MobileLayout extends StatelessWidget {
                             child: Builder(builder: (context) {
                               return GestureDetector(
                                 onTap: () {
-                                  Scaffold.of(context).openDrawer();
+                                  // Scaffold.of(context).openDrawer();
+                                  Scrollable.ensureVisible(
+                                    navController.home.currentContext!,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                    alignment: 1.0,
+                                  );
                                 },
-                                child: Container(
-                                  // decoration: const BoxDecoration(
-                                  //   gradient: RadialGradient(
-                                  //     colors: [
-                                  //       EColors.secondary,
-                                  //       Colors.transparent,
-                                  //     ],
-                                  //     stops: [
-                                  //       0.0,
-                                  //       0.5,
-                                  //     ],
-                                  //     center: Alignment.center,
-                                  //     radius: 1,
-                                  //     focal: Alignment.center,
-                                  //     focalRadius: 0.1,
-                                  //   ),
-                                  // ),
-                                  child: const Image(
-                                    image: AssetImage(
-                                      EImages.logoWhite,
-                                    ),
-                                    fit: BoxFit.contain,
+                                child: const Image(
+                                  image: AssetImage(
+                                    EImages.logoWhite,
                                   ),
+                                  fit: BoxFit.contain,
                                 ),
                               );
                             })),
@@ -132,14 +116,14 @@ class MobileLayout extends StatelessWidget {
           ),
 
           SliverToBoxAdapter(
-            key: controller.home,
+            key: navController.home,
             child: const HeroScreen(),
           ),
           // SliverToBoxAdapter(
           //   child: SizedBox(height: height, child: const TabletLayout()),
           // ),
           SliverToBoxAdapter(
-            key: controller.about,
+            key: navController.about,
             child: const AboutScreen(),
           ),
 
@@ -166,7 +150,7 @@ class MobileLayout extends StatelessWidget {
           //   ),
           // ),
           SliverToBoxAdapter(
-            key: controller.gallery,
+            key: navController.gallery,
             child: GalleryScreen(),
           ),
 
@@ -175,11 +159,11 @@ class MobileLayout extends StatelessWidget {
           //   child: const StoreScreen(),
           // ),
           SliverToBoxAdapter(
-            key: controller.music,
+            key: navController.music,
             child: const MusicScreen(),
           ),
           SliverToBoxAdapter(
-            key: controller.contact,
+            key: navController.contact,
             child: const ContactScreen(),
           ),
         ],

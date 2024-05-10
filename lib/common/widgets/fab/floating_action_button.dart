@@ -13,7 +13,7 @@ class EFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
-      distance: 130,
+      distance: 100,
       openIcon: WidgetAnimator(
           atRestEffect: WidgetRestingEffects.wave(),
           child: const Icon(
@@ -55,17 +55,17 @@ class EFloatingActionButton extends StatelessWidget {
         ),
 
         /// --- TWITCH --- ///
-        ActionButton(
-          onPressed: () {
-            EDeviceUtils.launchUrl(EText.twitchLink);
-          },
-          padding: EdgeInsets.zero,
-          color: Colors.transparent,
-          icon: const OnHoverIcon(
-            controllerKey: EText.twitch,
-            icon: EIcons.twitch,
-          ),
-        ),
+        // ActionButton(
+        //   onPressed: () {
+        //     EDeviceUtils.launchUrl(EText.twitchLink);
+        //   },
+        //   padding: EdgeInsets.zero,
+        //   color: Colors.transparent,
+        //   icon: const OnHoverIcon(
+        //     controllerKey: EText.twitch,
+        //     icon: EIcons.twitch,
+        //   ),
+        // ),
 
         /// --- NEWSLETTER --- ///
         ActionButton(

@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hovering/hovering.dart';
 import 'package:lottie/lottie.dart';
+import 'package:red_dot_entertainment/common/controllers/navigation_controller.dart';
+import 'package:red_dot_entertainment/common/controllers/scroll_controller.dart';
 import 'package:red_dot_entertainment/common/responsive/layouts/tablet_layout.dart';
 import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
 import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
@@ -29,19 +31,13 @@ class DesktopLayout extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    final ScrollController scrollController = ScrollController();
-
-    GlobalKey homeKey = GlobalKey();
-    GlobalKey aboutKey = GlobalKey();
-    GlobalKey galleryKey = GlobalKey();
-    GlobalKey musicKey = GlobalKey();
-    GlobalKey storeKey = GlobalKey();
-    GlobalKey contactKey = GlobalKey();
+    final NavigationController navController = Get.find();
+    final CustomScrollController scrollController = Get.find();
 
     return Scaffold(
       floatingActionButton: const EFloatingActionButton(),
       body: CustomScrollView(
-        controller: scrollController,
+        controller: scrollController.scrollController,
         slivers: [
           /// --- SLIVER APPBAR ---///
           SliverAppBar(
@@ -87,13 +83,14 @@ class DesktopLayout extends StatelessWidget {
                               HoverButton(
                                 onpressed: () {
                                   Scrollable.ensureVisible(
-                                    aboutKey.currentContext!,
+                                    navController.about.currentContext!,
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.easeInOut,
                                     alignment: 0.5,
                                   );
                                 },
                                 textColor: EColors.secondary,
+                                // textColor: scrollController.textColor.value,
                                 hoverTextColor: EColors.accent,
                                 padding: EdgeInsets.zero,
                                 hoverPadding: EdgeInsets.zero,
@@ -104,6 +101,7 @@ class DesktopLayout extends StatelessWidget {
                                       fontSize: ESizes.fontSizeHeadline),
                                 ),
                               ),
+
                               const SizedBox(
                                 width: ESizes.spaceBtwSections,
                               ),
@@ -112,13 +110,16 @@ class DesktopLayout extends StatelessWidget {
                               HoverButton(
                                 onpressed: () {
                                   Scrollable.ensureVisible(
-                                    galleryKey.currentContext!,
+                                    navController.gallery.currentContext!,
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.easeInOut,
                                     alignment: 0.5,
                                   );
                                 },
                                 textColor: EColors.secondary,
+                                // textColor: navController.currentPage == 1.obs
+                                //     ? EColors.secondary
+                                //     : EColors.blue,
                                 hoverTextColor: EColors.accent,
                                 padding: EdgeInsets.zero,
                                 hoverPadding: EdgeInsets.zero,
@@ -129,6 +130,7 @@ class DesktopLayout extends StatelessWidget {
                                       fontSize: ESizes.fontSizeHeadline),
                                 ),
                               ),
+
                               const SizedBox(
                                 width: ESizes.spaceBtwSections,
                               ),
@@ -142,7 +144,7 @@ class DesktopLayout extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               Scrollable.ensureVisible(
-                                homeKey.currentContext!,
+                                navController.home.currentContext!,
                                 duration: const Duration(milliseconds: 500),
                                 curve: Curves.easeInOut,
                                 alignment: 1.0,
@@ -214,7 +216,7 @@ class DesktopLayout extends StatelessWidget {
                                 HoverButton(
                                   onpressed: () {
                                     Scrollable.ensureVisible(
-                                      musicKey.currentContext!,
+                                      navController.music.currentContext!,
                                       duration:
                                           const Duration(milliseconds: 500),
                                       curve: Curves.easeInOut,
@@ -240,7 +242,7 @@ class DesktopLayout extends StatelessWidget {
                                 HoverButton(
                                   onpressed: () {
                                     Scrollable.ensureVisible(
-                                      contactKey.currentContext!,
+                                      navController.contact.currentContext!,
                                       duration:
                                           const Duration(milliseconds: 500),
                                       curve: Curves.easeInOut,
@@ -269,12 +271,14 @@ class DesktopLayout extends StatelessWidget {
           ),
 
           SliverToBoxAdapter(
-            key: homeKey,
+            // key: homeKey,
+            key: navController.home,
             child: const HeroScreen(),
           ),
 
           SliverToBoxAdapter(
-            key: aboutKey,
+            // key: aboutKey,
+            key: navController.about,
             child: const AboutScreen(),
           ),
 
@@ -301,7 +305,8 @@ class DesktopLayout extends StatelessWidget {
           //   ),
           // ),
           SliverToBoxAdapter(
-            key: galleryKey,
+            // key: galleryKey,
+            key: navController.gallery,
             child: GalleryScreen(),
           ),
 
@@ -310,11 +315,14 @@ class DesktopLayout extends StatelessWidget {
           //   child: const StoreScreen(),
           // ),
           SliverToBoxAdapter(
-            key: musicKey,
+            // key: musicKey,
+            key: navController.music,
             child: const MusicScreen(),
           ),
           SliverToBoxAdapter(
-            key: contactKey,
+            // key: contactKey,
+
+            key: navController.contact,
             child: const ContactScreen(),
           ),
         ],

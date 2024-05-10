@@ -9,12 +9,12 @@ class GalleryScreen extends StatelessWidget {
     EImages.studio1,
     EImages.studio2,
     EImages.studio3,
-    EImages.studio1,
-    EImages.studio2,
-    EImages.studio3,
-    EImages.studio1,
-    EImages.studio2,
-    EImages.studio3,
+    // EImages.studio1,
+    // EImages.studio2,
+    // EImages.studio3,
+    // EImages.studio1,
+    // EImages.studio2,
+    // EImages.studio3,
   ];
 
   @override
@@ -38,6 +38,7 @@ class GalleryScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   scrollDirection: Axis.horizontal,
                   imagesList: imagesList,
+                  borderRadius: BorderRadius.circular(ESizes.borderRadiusSM),
                   width: 250,
                   height: height * 0.7,
                   onTap: (index) {

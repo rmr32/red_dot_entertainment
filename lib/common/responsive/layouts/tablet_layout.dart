@@ -30,7 +30,7 @@ class TabletLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final controller = CustomScrollController.instance;
+    // final controller = CustomScrollController.instance;
 
     return ScrollTransformView(
       children: [

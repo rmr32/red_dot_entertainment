@@ -1,4 +1,5 @@
-import 'package:red_dot_entertainment/features/home/widgets/hero_buttons.dart';
+import 'package:red_dot_entertainment/common/widgets/buttons/on_hover_animated_button.dart';
+
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 
 class HeroBody extends StatelessWidget {
@@ -19,10 +20,11 @@ class HeroBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// --- MAIN HEADLINE --- ///
-              TextAnimator(
+              // TextAnimator(
+              Text(
                 EText.homeTagline1.toUpperCase(),
-                incomingEffect: WidgetTransitionEffects.incomingScaleDown(),
-                style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                // incomingEffect: WidgetTransitionEffects.incomingScaleDown(),
+                style: width > ESizes.mobile
                     ? Theme.of(context).textTheme.headlineLarge!.copyWith(
                           color: EColors.accent,
                           fontSize: ESizes.fontSizeHeadline * 2.5,
@@ -33,10 +35,10 @@ class HeroBody extends StatelessWidget {
                         ),
               ),
 
-              TextAnimator(
+              Text(
                 EText.homeTagline2.toUpperCase(),
-                incomingEffect: WidgetTransitionEffects.incomingScaleDown(),
-                style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                // incomingEffect: WidgetTransitionEffects.incomingScaleDown(),
+                style: width > ESizes.mobile
                     ? Theme.of(context).textTheme.headlineLarge!.copyWith(
                           color: EColors.accent,
                           fontSize: ESizes.fontSizeHeadline * 2.5,
@@ -51,7 +53,7 @@ class HeroBody extends StatelessWidget {
               /// --- SUBLINE --- ///
               Text(
                 EText.homeTagline3.toUpperCase(),
-                style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                style: width > ESizes.mobile
                     ? Theme.of(context).textTheme.headlineLarge!.copyWith(
                           color: EColors.secondary,
                           fontSize: ESizes.fontSizeHeadline * 1.5,
@@ -76,7 +78,7 @@ class HeroBody extends StatelessWidget {
                 Text(
                   '1 Hour',
                   textAlign: TextAlign.center,
-                  style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                  style: width > ESizes.mobile
                       ? Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: EColors.secondary,
                           )
@@ -95,7 +97,7 @@ class HeroBody extends StatelessWidget {
                       .copyWith(color: EColors.secondary),
                 ),
                 const SizedBox(height: ESizes.spaceBtwItems / 2),
-                EHeroButton(
+                OnHoverAnimatedButton(
                   onPressed: () {
                     EDeviceUtils.launchUrl(EText.bookOne);
                   },
@@ -108,7 +110,7 @@ class HeroBody extends StatelessWidget {
                 Text(
                   '4 Hours',
                   textAlign: TextAlign.center,
-                  style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                  style: width > ESizes.mobile
                       ? Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: EColors.secondary,
                           )
@@ -127,7 +129,7 @@ class HeroBody extends StatelessWidget {
                       .copyWith(color: EColors.secondary),
                 ),
                 const SizedBox(height: ESizes.spaceBtwItems / 2),
-                EHeroButton(
+                OnHoverAnimatedButton(
                   onPressed: () {
                     EDeviceUtils.launchUrl(EText.bookFour);
                   },
@@ -140,7 +142,7 @@ class HeroBody extends StatelessWidget {
                 Text(
                   '8 Hours',
                   textAlign: TextAlign.center,
-                  style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                  style: width > ESizes.mobile
                       ? Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: EColors.secondary,
                           )
@@ -159,7 +161,7 @@ class HeroBody extends StatelessWidget {
                       .copyWith(color: EColors.secondary),
                 ),
                 const SizedBox(height: ESizes.spaceBtwItems / 2),
-                EHeroButton(
+                OnHoverAnimatedButton(
                   onPressed: () {
                     EDeviceUtils.launchUrl(EText.bookEight);
                   },

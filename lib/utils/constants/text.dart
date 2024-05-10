@@ -40,7 +40,8 @@ class EText {
   static const String follow = 'Follow';
   static const String instagramLink = 'https://www.instagram.com/red.dot.ent/';
   static const String twitchLink = 'https://www.twitch.com';
-  static const String youtubeLink = 'https://www.youtube.com';
+  static const String youtubeLink =
+      'https://www.youtube.com/channel/UCssa6YtxbwIbzdtB1iz1ywA';
   static const String bookOne =
       'https://calendly.com/reddottent/one-hour-session';
   static const String bookEight =
@@ -100,7 +101,7 @@ class EText {
 
   static const String formSubscribe = 'Stay in the loop!';
   static const String formSubscribeSubtitle =
-      'Join our email list and recieve 20% off your first hour!';
+      'Join our email list and recieve 10% off your first hour!';
   static const String formContact = 'Work With Us';
   static const String formContactSubtitle =
       'We are always available to answer any questions regarding our music studio or booking appointments. We look forward to hearing from you soon!';

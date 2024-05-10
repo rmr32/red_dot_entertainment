@@ -26,7 +26,7 @@ class Playlist extends StatelessWidget {
               /// --- Album Art  --- ///
               leading: ClipRRect(
                 clipBehavior: Clip.antiAlias,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(ESizes.borderRadiusSM),
                 child: Image.asset(
                   songModel.albumArt,
                   height:

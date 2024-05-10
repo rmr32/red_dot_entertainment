@@ -6,7 +6,7 @@ class ECard extends StatelessWidget {
     this.elevation = ESizes.elevationMd,
     this.color = Colors.transparent,
     this.borderColor = EColors.secondary,
-    this.borderRadius = ESizes.borderRadiusLg,
+    this.borderRadius = ESizes.borderRadiusSM,
     required this.child,
     this.onPressed,
   });

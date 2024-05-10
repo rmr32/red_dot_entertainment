@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hovering/hovering.dart';
 import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
-import 'package:red_dot_entertainment/features/home/widgets/hero_buttons.dart';
+
 import 'package:red_dot_entertainment/features/home/widgets/hero_body.dart';
 import 'package:red_dot_entertainment/features/home/widgets/hero_video.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
@@ -62,8 +62,8 @@ class HeroScreen extends StatelessWidget {
             child: Center(
               child: ClipRRect(
                   child: Transform.scale(
-                scale: width > ESizes.mobile ? 1.5 : 5,
-                child: const HeroVideo(),
+                scale: width > ESizes.mobile ? 1.5 : 1,
+                // child: const HeroVideo(),
                 // child: const SizedBox(),
               )),
             ),

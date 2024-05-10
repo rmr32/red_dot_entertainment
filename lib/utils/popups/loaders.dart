@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:red_dot_entertainment/common/widgets/buttons/on_hover_button.dart';
-import 'package:red_dot_entertainment/features/home/widgets/hero_buttons.dart';
+
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/helpers/helper_functions.dart';
 

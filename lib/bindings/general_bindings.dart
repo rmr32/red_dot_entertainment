@@ -23,6 +23,7 @@ class GeneralBindings extends Bindings {
     Get.put(OnHoverButtonController());
     Get.put(NavigationController());
     Get.put(CustomScrollController());
+
     // Get.put(HeightController());
     Get.put(PlaylistController());
     // Get.put(VideoController());

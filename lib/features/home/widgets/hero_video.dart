@@ -80,4 +80,10 @@ class _HeroVideoState extends State<HeroVideo> {
 
   @override
   Widget build(BuildContext context) => VideoPlayer(_videoController);
+
+  @override
+  void dispose() {
+    _videoController.dispose();
+    super.dispose();
+  }
 }

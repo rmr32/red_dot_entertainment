@@ -1,4 +1,3 @@
-import 'package:infinite_carousel/infinite_carousel.dart';
 import 'package:parallax_cards/parallax_cards.dart';
 import 'package:red_dot_entertainment/features/gallery/widgets/image_viewer.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
@@ -45,23 +44,11 @@ class GalleryScreen extends StatelessWidget {
                     Get.to(
                       () => const EImageViewer(),
                       transition: Transition.fadeIn,
+                      // duration: const Duration(seconds: 3),
                       arguments: {'src': imagesList[index]},
                     );
                   },
                 ),
-                //           InfiniteCarousel.builder(
-                //   itemCount: 10,
-                //   itemExtent: 120,
-                //   center: true,
-                //   anchor: 0.0,
-                //   velocityFactor: 0.2,
-                //   onIndexChanged: (index) {},
-                //   controller: controller,
-                //   axisDirection: Axis.horizontal,
-                //   loop: true,
-                //   itemBuilder: (context, itemIndex, realIndex) {
-                //   },
-                // )
               ],
             ),
           );

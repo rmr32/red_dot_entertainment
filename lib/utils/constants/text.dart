@@ -19,6 +19,16 @@ class EText {
   static const String gallery = 'Gallery';
   static const String store = 'Merch';
   static const String book = 'Book';
+  static const String contact = 'Contact';
+
+  /// --- General Information Text --- ///
+  ///
+  ///
+  static const String addressStreet = '12307 Roxie Dr';
+  static const String addressCity = 'Austin';
+  static const String addressState = 'TX';
+  static const String addressZip = '78729';
+  static const String addressSuite = 'Suite 103';
 
   /// --- Social Media Text --- ///
   ///
@@ -84,10 +94,26 @@ class EText {
   static const String beatSubtext1 =
       'RED DOT ENTERTAINMENT is setting a new standard for musical innovation. With over 15 years of experience producing music in the Trap, Hip Hop, RnB  and Indie/Alternative genres, JxD is one to watch. Our newly-built state of the art recording studio has given us the platform to break industry standards and introduce audiences to a new level of creativity. We create music that merges and defies genre lines, drawing on various elements to create something truly unique and powerful. RDE is revolutionizing the way music is created and enjoyed, paving the way for a new era of excellence. Whether it’s creating innovative soundscapes, lush vocal productions or masterful melodies, JxD is a true pioneer of the music industry and will continue to lead the way forward.';
 
-  /// --- Email Form Text --- ///
+  /// --- Form Text --- ///
   ///
   ///
+
+  static const String formSubscribe = 'Stay in the loop!';
+  static const String formSubscribeSubtitle =
+      'Join our email list and recieve 20% off your first hour!';
+  static const String formContact = 'Work With Us';
+  static const String formContactSubtitle =
+      'We are always available to answer any questions regarding our music studio or booking appointments. We look forward to hearing from you soon!';
+  static const String formEmail = 'Email';
+  static const String formName = 'Name';
+  static const String formFirstName = 'First Name';
+  static const String formLastName = 'Last Name';
+  static const String formRequest = 'Request';
   static const String formHintEmail = 'Enter your email';
+  static const String formHintName = 'Enter your name';
+  static const String formHintFirstName = 'Enter your first name';
+  static const String formHintLastName = 'Enter your last name';
+  static const String formHintRequest = 'What are you looking for?';
 
   /// --- Global Button Text --- ///
   ///
@@ -107,6 +133,15 @@ class EText {
   /// --- DATABASE TEXT --- ///
   ///
   ///
+  static const String dbBookings = 'bookings';
+  static const String dbSubscriptions = 'subscriptions';
+  static const String dbContact = 'contact';
+  static const String dbId = 'id';
+  static const String dbCreatedAt = 'created_at';
+  static const String dbFirstName = 'first_name';
+  static const String dbLastName = 'last_name';
+  static const String dbEmail = 'email';
+  static const String dbRequest = 'request';
 
   /// --- Cart Model --- ///
   static const String dbCartModelProductId = 'productId';

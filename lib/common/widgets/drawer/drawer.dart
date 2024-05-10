@@ -1,15 +1,18 @@
+import 'package:red_dot_entertainment/common/controllers/navigation_controller.dart';
 import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
 import 'package:red_dot_entertainment/common/widgets/icons/on_hover_icon.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/device/device_utility.dart';
 
 class EDrawer extends StatelessWidget {
-  const EDrawer({super.key, this.isRounded = true});
+  const EDrawer({super.key, this.isRounded = true, required this.navKey});
 
   final bool isRounded;
+  final GlobalKey navKey;
 
   @override
   Widget build(BuildContext context) {
+    final NavigationController controller = Get.find();
     return Drawer(
       backgroundColor: EColors.primary.withOpacity(EStyle.colorBlockOpacity),
       shape: isRounded
@@ -38,69 +41,26 @@ class EDrawer extends StatelessWidget {
               ),
 
               /// --- Navigation --- ///
-              Column(
+              const Column(
                 children: [
-                  const ENavTiles(navPage: EText.home),
-                  const ENavTiles(navPage: EText.about),
-                  // ENavTiles(navPage: EText.price),
-                  const ENavTiles(navPage: EText.beats),
-                  const ENavTiles(navPage: EText.gallery),
+                  ENavTiles(navPage: EText.home),
+                  ENavTiles(navPage: EText.about),
                   ENavTiles(
-                    navPage: EText.book,
-                    onPressed: () {
-                      // EDeviceUtils.launchUrl(EText.calendly);
-                    },
+                    navPage: EText.gallery,
                   ),
+                  // ENavTiles(navPage: EText.price),
+                  ENavTiles(navPage: EText.beats),
+
+                  // ENavTiles(
+                  //   navPage: EText.book,
+                  //   onPressed: () {
+                  //     // EDeviceUtils.launchUrl(EText.calendly);
+                  //   },
+                  // ),
+                  ENavTiles(navPage: EText.contact),
                 ],
               ),
             ],
-          ),
-
-          /// --- Social Icons --- ///
-          Padding(
-            padding: const EdgeInsets.only(bottom: ESizes.sectionXs),
-            child: Column(
-              children: [
-                Text(
-                  EText.follow,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(color: EColors.secondary),
-                ),
-                const SizedBox(height: ESizes.spaceBtwItems),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(flex: 3),
-                    OnHoverIcon(
-                      controllerKey: EText.twitch,
-                      icon: EIcons.twitch,
-                      onPressed: () {
-                        EDeviceUtils.launchUrl(EText.twitchLink);
-                      },
-                    ),
-                    const Spacer(),
-                    OnHoverIcon(
-                      controllerKey: EText.youtube,
-                      icon: EIcons.youtube,
-                      onPressed: () {
-                        EDeviceUtils.launchUrl(EText.youtubeLink);
-                      },
-                    ),
-                    const Spacer(),
-                    OnHoverIcon(
-                      controllerKey: EText.instagram,
-                      icon: EIcons.instagram,
-                      onPressed: () {
-                        EDeviceUtils.launchUrl(EText.instagramLink);
-                      },
-                    ),
-                    const Spacer(flex: 3),
-                  ],
-                ),
-              ],
-            ),
           ),
         ],
       ),

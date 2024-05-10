@@ -13,6 +13,11 @@ library;
 // export 'package:red_dot_entertainment/features/music/beats_screen.dart';
 // export 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
 // export 'package:red_dot_entertainment/features/home/home_screen.dart';
+export 'package:red_dot_entertainment/features/about/widgets/about_background.dart';
+export 'package:red_dot_entertainment/features/about/widgets/about_primary.dart';
+export 'package:red_dot_entertainment/features/about/widgets/about_page_dots.dart';
+export 'package:red_dot_entertainment/features/about/widgets/about_producer.dart';
+export 'package:red_dot_entertainment/features/about/widgets/about_secondary.dart';
 
 /// ------------------------------------------------------------------ ///
 /// CONTROLLERS
@@ -102,3 +107,10 @@ export 'package:red_dot_entertainment/main.dart';
 // export 'package:red_dot_entertainment/utils/theme/theme.dart';
 
 // export 'package:red_dot_entertainment/common/widgets/icons/on_hover_icon.dart';
+
+export 'package:red_dot_entertainment/utils/device/device_utility.dart';
+export 'package:widget_and_text_animator/widget_and_text_animator.dart';
+export 'package:flutter_animate/flutter_animate.dart';
+export 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+export 'package:widget_mask/widget_mask.dart';
+export 'package:flutter_svg/flutter_svg.dart';

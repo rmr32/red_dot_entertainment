@@ -31,8 +31,11 @@ class OnHoverIcon extends StatelessWidget {
             shape:
                 MaterialStateProperty.all<OutlinedBorder>(const CircleBorder()),
             elevation: MaterialStateProperty.all<double>(5),
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                const EdgeInsets.all(18)),
+            padding: isSmall
+                ? MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    const EdgeInsets.all(9))
+                : MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    const EdgeInsets.all(18)),
             animationDuration: const Duration(seconds: 1),
             side: MaterialStateProperty.all(BorderSide.none),
             backgroundColor: controller.isHovered[controllerKey]?.value ?? false
@@ -40,7 +43,7 @@ class OnHoverIcon extends StatelessWidget {
                 : MaterialStateProperty.all<Color>(Colors.white),
           ),
           child: Icon(
-            size: 25,
+            size: isSmall ? 15 : 25,
             icon.icon,
             color: color ??
                 (controller.isHovered[controllerKey]?.value ?? false

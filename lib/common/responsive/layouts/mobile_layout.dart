@@ -1,142 +1,189 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hovering/hovering.dart';
+import 'package:lottie/lottie.dart';
 import 'package:red_dot_entertainment/common/controllers/navigation_controller.dart';
+import 'package:red_dot_entertainment/common/responsive/layouts/tablet_layout.dart';
+import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
+import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
+import 'package:red_dot_entertainment/common/widgets/fab/floating_action_button.dart';
+import 'package:red_dot_entertainment/features/about/about_screen.dart';
+import 'package:red_dot_entertainment/features/contact/contact_screen.dart';
+import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
+import 'package:red_dot_entertainment/features/home/hero_screen.dart';
+import 'package:red_dot_entertainment/features/home/widgets/hero_video.dart';
+import 'package:red_dot_entertainment/features/music/music_screen.dart';
+import 'package:red_dot_entertainment/features/store/store_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/device/device_utility.dart';
+import 'package:widget_mask/widget_mask.dart';
 
-class MobileLayout extends StatefulWidget {
+class MobileLayout extends StatelessWidget {
   const MobileLayout({super.key});
 
   @override
-  State<MobileLayout> createState() => _MobileLayoutState();
-}
-
-class _MobileLayoutState extends State<MobileLayout> {
-  final controller = NavigationController.instance;
-  @override
   Widget build(BuildContext context) {
-    double height = EDeviceUtils.getScreenHeight();
-    return SafeArea(
-      child: Scaffold(
-        body: NestedScrollView(
-            // floatHeaderSlivers: true, // To have appbar reappear immediateley
-            headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                  SliverAppBar(
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    elevation: 5,
-                    forceElevated: innerBoxIsScrolled,
-                    title: const Text(EText.name),
-                    floating: true,
-                    snap: true,
-                    centerTitle: true,
-                    expandedHeight: 300,
-                    stretch: true,
-                    flexibleSpace: const FlexibleSpaceBar(
-                      stretchModes: [StretchMode.blurBackground],
-                      background: Image(
-                        image: AssetImage(EImages.austin1),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
-                    /// --- TabBar --- ///
-                    /// If Using TabBar, wrap Scaffold with DefaultTabController and add length: tab#
-                    /// Also, wrap your body in a TabBarView with children of 'views'
-                    /// https://www.youtube.com/watch?v=xzPXqQ-Pe2g
-                    // pinned: true // Keeps the tabbar sticky
-                    // bottom: TabBar(
-                    //   tabs: [
-                    //     Tab(
-                    //       icon: EIcons.instagram,
-                    //     ),
-                    //     Tab(
-                    //       icon: EIcons.instagram,
-                    //     )
-                    //   ],
-                    // ),
-                  ),
-                ],
-            body: ListView.separated(
-                itemBuilder: ((context, index) => Text(index.toString())),
-                separatorBuilder: (context, index) => const SizedBox(
-                      height: 12,
+    final ScrollController scrollController = ScrollController();
+    final NavigationController controller = Get.find();
+    // GlobalKey homeKey = GlobalKey();
+    // GlobalKey aboutKey = GlobalKey();
+    // GlobalKey galleryKey = GlobalKey();
+    // GlobalKey musicKey = GlobalKey();
+    // GlobalKey storeKey = GlobalKey();
+
+    return Scaffold(
+      floatingActionButton: const EFloatingActionButton(),
+      drawer: EDrawer(
+        navKey: controller.about,
+        // homeKey: homeKey,
+        // aboutKey: aboutKey,
+        // galleryKey: galleryKey,
+        // musicKey: musicKey,
+        // storeKey: storeKey,
+      ),
+      body: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          /// --- SLIVER APPBAR ---///
+          SliverAppBar(
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            floating: true,
+            snap: true,
+            expandedHeight: 50,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: FlexibleSpaceBar(
+              collapseMode: CollapseMode.parallax,
+              background: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 00.0, vertical: 00),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        EColors.primary,
+                        EColors.primary,
+                        EColors.primary.withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                      stops: const [
+                        0.0,
+                        0.3,
+                        0.7,
+                        0.9,
+                      ],
                     ),
-                itemCount: 50)),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        /// --- LOGO ---
+                        Expanded(
+                            flex: 1,
+                            child: Builder(builder: (context) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Scaffold.of(context).openDrawer();
+                                },
+                                child: Container(
+                                  // decoration: const BoxDecoration(
+                                  //   gradient: RadialGradient(
+                                  //     colors: [
+                                  //       EColors.secondary,
+                                  //       Colors.transparent,
+                                  //     ],
+                                  //     stops: [
+                                  //       0.0,
+                                  //       0.5,
+                                  //     ],
+                                  //     center: Alignment.center,
+                                  //     radius: 1,
+                                  //     focal: Alignment.center,
+                                  //     focalRadius: 0.1,
+                                  //   ),
+                                  // ),
+                                  child: const Image(
+                                    image: AssetImage(
+                                      EImages.logoWhite,
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              );
+                            })),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          SliverToBoxAdapter(
+            key: controller.home,
+            child: const HeroScreen(),
+          ),
+          // SliverToBoxAdapter(
+          //   child: SizedBox(height: height, child: const TabletLayout()),
+          // ),
+          SliverToBoxAdapter(
+            key: controller.about,
+            child: const AboutScreen(),
+          ),
+
+          // SliverToBoxAdapter(
+          //   child: Lottie.asset('assets/animations/soundwave.json',
+          //       width: double.infinity, height: 300),
+          // ),
+          // SliverToBoxAdapter(
+          //   child: Opacity(
+          //     opacity: 0.5,
+          //     child: WidgetMask(
+          //       blendMode: BlendMode.srcATop,
+          //       childSaveLayer: true,
+          //       mask: Image.asset(
+          //         EImages.bg,
+          //         fit: BoxFit.cover,
+          //       ),
+          //       child: Image.asset(
+          //         EImages.logo,
+          //         height: 600,
+          //         fit: BoxFit.contain,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          SliverToBoxAdapter(
+            key: controller.gallery,
+            child: GalleryScreen(),
+          ),
+
+          // SliverToBoxAdapter(
+          //   key: storeKey,
+          //   child: const StoreScreen(),
+          // ),
+          SliverToBoxAdapter(
+            key: controller.music,
+            child: const MusicScreen(),
+          ),
+          SliverToBoxAdapter(
+            key: controller.contact,
+            child: const ContactScreen(),
+          ),
+        ],
       ),
     );
   }
 }
-
-// class MobileLayout extends StatefulWidget {
-//   const MobileLayout({super.key});
-
-//   @override
-//   State<MobileLayout> createState() => _MobileLayoutState();
-// }
-
-// class _MobileLayoutState extends State<MobileLayout> {
-//   final controller = NavigationController.instance;
-//   @override
-//   Widget build(BuildContext context) {
-//     double height = EDeviceUtils.getScreenHeight();
-//     return SafeArea(
-//       child: Scaffold(
-//         extendBodyBehindAppBar: true,
-//         backgroundColor: Theme.of(context).colorScheme.surface,
-//         appBar: const EAppBar(
-//           showBackArrow: false,
-//           showImplyLeading: true,
-//           color: Colors.transparent,
-//         ),
-//         drawer: const EDrawer(),
-//         floatingActionButton: const EFloatingActionButton(),
-//         body: Column(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Container(
-//               decoration: BoxDecoration(
-//                 image: DecorationImage(
-//                   colorFilter: ColorFilter.mode(
-//                       EColors.primary.withOpacity(EStyle.colorBlockOpacity),
-//                       BlendMode.darken),
-//                   image: const AssetImage(EImages.bg),
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-//               height: height,
-//               width: double.infinity,
-//               child: Padding(
-//                 padding: const EdgeInsets.only(left: 30.0, right: 30),
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   crossAxisAlignment: CrossAxisAlignment.center,
-//                   children: [
-//                     Obx(
-//                       () {
-//                         switch (controller.currentPage.value) {
-//                           case 0:
-//                             return const HomeScreen();
-//                           case 1:
-//                             return const AboutScreen2();
-//                           case 2:
-//                             return const PricingScreen();
-//                           case 3:
-//                             return const PlayerScreen();
-//                           case 4:
-//                             return GalleryScreen();
-//                           case 5:
-//                             return const ReservationScreen();
-//                           default:
-//                             return Container();
-//                         }
-//                       },
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

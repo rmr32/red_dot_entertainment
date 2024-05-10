@@ -24,10 +24,13 @@ class EHeroButton extends StatelessWidget {
             child: Text(
               'BOOK',
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: EColors.secondary),
+              style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                  ? Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: EColors.secondary,
+                      )
+                  : Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: EColors.secondary,
+                      ),
             ),
           ),
         ),
@@ -39,10 +42,13 @@ class EHeroButton extends StatelessWidget {
           child: Text(
             'BOOK',
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(color: EColors.secondary),
+            style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                ? Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: EColors.secondary,
+                    )
+                : Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: EColors.secondary,
+                    ),
           ),
         ),
       ),

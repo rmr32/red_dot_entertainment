@@ -21,7 +21,8 @@ class EMaps {
     EText.price: 2,
     EText.beats: 3,
     EText.gallery: 4,
-    EText.book: 5,
+    EText.contact: 5,
+    EText.book: 6,
   };
 
   List<int> navPageValues = navPage.values.toList();

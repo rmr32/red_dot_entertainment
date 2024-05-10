@@ -34,7 +34,7 @@ class EColors {
 
   /// --- Text Colors --- ///
   static const Color textPrimary = primary;
-  static const Color textSecondary = tertiary;
+  static const Color textSecondary = secondary;
   static const Color textWhite = backgroundLight;
 
   /// --- Background Container Colors --- ///

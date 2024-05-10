@@ -1,54 +1,11 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hovering/hovering.dart';
+import 'package:red_dot_entertainment/common/widgets/buttons/on_hover_button.dart';
+import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+import 'package:red_dot_entertainment/features/contact/widgets/contact_form.dart';
 import 'package:red_dot_entertainment/features/contact/widgets/google_map.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
-
-class MapSample extends StatefulWidget {
-  const MapSample({super.key});
-
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
-
-  @override
-  Widget build(BuildContext context) {
-    return
-        // Scaffold(
-        // body: GoogleMap(
-        GoogleMap(
-      // mapType: MapType.hybrid,
-      initialCameraPosition: _kGooglePlex,
-      onMapCreated: (GoogleMapController controller) {
-        _controller.complete(controller);
-      },
-    );
-    //   floatingActionButton: FloatingActionButton.extended(
-    //     onPressed: _goToTheLake,
-    //     label: const Text('To the lake!'),
-    //     icon: const Icon(Icons.directions_boat),
-    //   ),
-    // );
-  }
-
-  // Future<void> _goToTheLake() async {
-  //   final GoogleMapController controller = await _controller.future;
-  //   await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  // }
-}
+import 'package:red_dot_entertainment/utils/popups/loaders.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
@@ -57,18 +14,408 @@ class ContactScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // double height = EDeviceUtils.getScreenHeight();
-    // double width = EDeviceUtils.getScreenWidth();
-    final PageController controller = PageController();
 
-    return const Stack(
+    return Column(
       children: [
-        /// --- IMAGE --- ///
-        Positioned(
-            top: 0,
-            bottom: 0,
-            right: 40,
-            child: SizedBox(height: 500, width: 500, child: GoogleMapWidget())),
+        const Divider(
+          color: EColors.secondary,
+        ),
+        const SizedBox(height: ESizes.spaceBtwSections),
+        Padding(
+          padding: width < ESizes.mobile
+              ? const EdgeInsets.symmetric(horizontal: 30.0)
+              : const EdgeInsets.only(left: 30.0, right: 30, bottom: 30),
+          child: SizedBox(
+            width: width < ESizes.mobile
+                ? width * 0.7
+                : width < ESizes.tablet
+                    ? width * 0.8
+                    : width * 0.5,
+            child: GridView(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: width > ESizes.mobile ? 2 : 1),
+              children: [
+                const ECard(child: GoogleMapWidget()),
+                Column(
+                  mainAxisAlignment: width > ESizes.mobile
+                      ? MainAxisAlignment.center
+                      : MainAxisAlignment.start,
+                  children: [
+                    width > ESizes.mobile
+                        ? const SizedBox.shrink()
+                        : const SizedBox(height: ESizes.spaceBtwItems),
+                    Text(
+                      EText.addressStreet,
+                      style: width > ESizes.mobile
+                          ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                color: EColors.secondary,
+                              )
+                          : Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: EColors.secondary,
+                              ),
+                    ),
+                    Text(
+                      '${EText.addressCity}, ${EText.addressState} ${EText.addressZip}',
+                      style: width > ESizes.mobile
+                          ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                color: EColors.secondary,
+                              )
+                          : Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: EColors.secondary,
+                              ),
+                    ),
+                    Text(
+                      EText.addressSuite,
+                      style: width > ESizes.mobile
+                          ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                color: EColors.secondary,
+                              )
+                          : Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: EColors.secondary,
+                              ),
+                    ),
+                    const SizedBox(height: ESizes.spaceBtwItems),
+                    HoverWidget(
+                      onHover: (hovering) {
+                        // print('Widget hovered: $hovering');
+                      },
+                      hoverChild: WidgetAnimator(
+                        atRestEffect: WidgetRestingEffects.wave(),
+                        child: ECard(
+                          onPressed: () {
+                            ELoaders.customForm(content: const EContactForm());
+                            // ELoaders.showForm(
+                            //     isContactForm: true, title: EText.formWorkWithUs);
+                          },
+                          borderColor: EColors.secondary,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 16),
+                            child: Text(
+                              EText.formContact,
+                              textAlign: TextAlign.center,
+                              style:
+                                  EDeviceUtils.getScreenWidth() > ESizes.mobile
+                                      ? Theme.of(context)
+                                          .textTheme
+                                          .titleMedium!
+                                          .copyWith(
+                                            color: EColors.secondary,
+                                          )
+                                      : Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(
+                                            color: EColors.secondary,
+                                          ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      child: ECard(
+                        onPressed: () {
+                          ELoaders.customForm(
+                              content: const EContactForm(
+                            title: EText.formContact,
+                            subTitle: EText.formContactSubtitle,
+                          ));
+                          // ELoaders.showForm(
+                          //     isContactForm: true, title: EText.formWorkWithUs);
+                        },
+                        borderColor: EColors.accent,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 16),
+                          child: Text(
+                            EText.formContact,
+                            textAlign: TextAlign.center,
+                            style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                                ? Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: EColors.secondary,
+                                    )
+                                : Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      color: EColors.secondary,
+                                    ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          // child: width > ESizes.mobile
+          //     ? Row(
+          //         children: [
+          //           const ECard(
+          //               child: SizedBox(
+          //                   width: 200, height: 200, child: GoogleMapWidget())),
+          //           Column(
+          //             mainAxisAlignment: width > ESizes.mobile
+          //                 ? MainAxisAlignment.center
+          //                 : MainAxisAlignment.start,
+          //             children: [
+          //               width > ESizes.mobile
+          //                   ? const SizedBox.shrink()
+          //                   : const SizedBox(height: ESizes.spaceBtwItems),
+          //               Text(
+          //                 EText.addressStreet,
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               Text(
+          //                 '${EText.addressCity}, ${EText.addressState} ${EText.addressZip}',
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               Text(
+          //                 EText.addressSuite,
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               const SizedBox(height: ESizes.spaceBtwItems),
+          //               HoverWidget(
+          //                 onHover: (hovering) {
+          //                   // print('Widget hovered: $hovering');
+          //                 },
+          //                 hoverChild: WidgetAnimator(
+          //                   atRestEffect: WidgetRestingEffects.wave(),
+          //                   child: ECard(
+          //                     onPressed: () {
+          //                       ELoaders.customForm(
+          //                           content: const EContactForm());
+          //                       // ELoaders.showForm(
+          //                       //     isContactForm: true, title: EText.formWorkWithUs);
+          //                     },
+          //                     borderColor: EColors.secondary,
+          //                     child: Padding(
+          //                       padding: const EdgeInsets.symmetric(
+          //                           vertical: 10.0, horizontal: 16),
+          //                       child: Text(
+          //                         EText.formContact,
+          //                         textAlign: TextAlign.center,
+          //                         style: EDeviceUtils.getScreenWidth() >
+          //                                 ESizes.mobile
+          //                             ? Theme.of(context)
+          //                                 .textTheme
+          //                                 .titleMedium!
+          //                                 .copyWith(
+          //                                   color: EColors.secondary,
+          //                                 )
+          //                             : Theme.of(context)
+          //                                 .textTheme
+          //                                 .titleSmall!
+          //                                 .copyWith(
+          //                                   color: EColors.secondary,
+          //                                 ),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //                 child: ECard(
+          //                   onPressed: () {
+          //                     ELoaders.customForm(
+          //                         content: const EContactForm(
+          //                       title: EText.formContact,
+          //                       subTitle: EText.formContactSubtitle,
+          //                     ));
+          //                     // ELoaders.showForm(
+          //                     //     isContactForm: true, title: EText.formWorkWithUs);
+          //                   },
+          //                   borderColor: EColors.accent,
+          //                   child: Padding(
+          //                     padding: const EdgeInsets.symmetric(
+          //                         vertical: 10.0, horizontal: 16),
+          //                     child: Text(
+          //                       EText.formContact,
+          //                       textAlign: TextAlign.center,
+          //                       style: EDeviceUtils.getScreenWidth() >
+          //                               ESizes.mobile
+          //                           ? Theme.of(context)
+          //                               .textTheme
+          //                               .titleMedium!
+          //                               .copyWith(
+          //                                 color: EColors.secondary,
+          //                               )
+          //                           : Theme.of(context)
+          //                               .textTheme
+          //                               .titleSmall!
+          //                               .copyWith(
+          //                                 color: EColors.secondary,
+          //                               ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //         ],
+          //       )
+          //     : Column(
+          //         children: [
+          //           ECard(
+          //               child: SizedBox(
+          //                   width: width * 0.5,
+          //                   height: width * 0.5,
+          //                   child: const GoogleMapWidget())),
+          //           Column(
+          //             mainAxisAlignment: width > ESizes.mobile
+          //                 ? MainAxisAlignment.center
+          //                 : MainAxisAlignment.start,
+          //             children: [
+          //               width > ESizes.mobile
+          //                   ? const SizedBox.shrink()
+          //                   : const SizedBox(height: ESizes.spaceBtwItems),
+          //               Text(
+          //                 EText.addressStreet,
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               Text(
+          //                 '${EText.addressCity}, ${EText.addressState} ${EText.addressZip}',
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               Text(
+          //                 EText.addressSuite,
+          //                 style: width > ESizes.mobile
+          //                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+          //                           color: EColors.secondary,
+          //                         )
+          //                     : Theme.of(context)
+          //                         .textTheme
+          //                         .bodyMedium!
+          //                         .copyWith(
+          //                           color: EColors.secondary,
+          //                         ),
+          //               ),
+          //               const SizedBox(height: ESizes.spaceBtwItems),
+          //               HoverWidget(
+          //                 onHover: (hovering) {
+          //                   // print('Widget hovered: $hovering');
+          //                 },
+          //                 hoverChild: WidgetAnimator(
+          //                   atRestEffect: WidgetRestingEffects.wave(),
+          //                   child: ECard(
+          //                     onPressed: () {
+          //                       ELoaders.customForm(
+          //                           content: const EContactForm());
+          //                       // ELoaders.showForm(
+          //                       //     isContactForm: true, title: EText.formWorkWithUs);
+          //                     },
+          //                     borderColor: EColors.secondary,
+          //                     child: Padding(
+          //                       padding: const EdgeInsets.symmetric(
+          //                           vertical: 10.0, horizontal: 16),
+          //                       child: Text(
+          //                         EText.formContact,
+          //                         textAlign: TextAlign.center,
+          //                         style: EDeviceUtils.getScreenWidth() >
+          //                                 ESizes.mobile
+          //                             ? Theme.of(context)
+          //                                 .textTheme
+          //                                 .titleMedium!
+          //                                 .copyWith(
+          //                                   color: EColors.secondary,
+          //                                 )
+          //                             : Theme.of(context)
+          //                                 .textTheme
+          //                                 .titleSmall!
+          //                                 .copyWith(
+          //                                   color: EColors.secondary,
+          //                                 ),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //                 child: ECard(
+          //                   onPressed: () {
+          //                     ELoaders.customForm(
+          //                         content: const EContactForm(
+          //                       title: EText.formContact,
+          //                       subTitle: EText.formContactSubtitle,
+          //                     ));
+          //                     // ELoaders.showForm(
+          //                     //     isContactForm: true, title: EText.formWorkWithUs);
+          //                   },
+          //                   borderColor: EColors.accent,
+          //                   child: Padding(
+          //                     padding: const EdgeInsets.symmetric(
+          //                         vertical: 10.0, horizontal: 16),
+          //                     child: Text(
+          //                       EText.formContact,
+          //                       textAlign: TextAlign.center,
+          //                       style: EDeviceUtils.getScreenWidth() >
+          //                               ESizes.mobile
+          //                           ? Theme.of(context)
+          //                               .textTheme
+          //                               .titleMedium!
+          //                               .copyWith(
+          //                                 color: EColors.secondary,
+          //                               )
+          //                           : Theme.of(context)
+          //                               .textTheme
+          //                               .titleSmall!
+          //                               .copyWith(
+          //                                 color: EColors.secondary,
+          //                               ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //   ],
+          // ),
+        ),
       ],
     );
   }

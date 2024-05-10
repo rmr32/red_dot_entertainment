@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hovering/hovering.dart';
 import 'package:lottie/lottie.dart';
+import 'package:red_dot_entertainment/common/responsive/layouts/tablet_layout.dart';
 import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
 import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
 import 'package:red_dot_entertainment/common/widgets/fab/floating_action_button.dart';
 import 'package:red_dot_entertainment/features/about/about_screen.dart';
@@ -27,11 +30,13 @@ class DesktopLayout extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     final ScrollController scrollController = ScrollController();
+
     GlobalKey homeKey = GlobalKey();
     GlobalKey aboutKey = GlobalKey();
     GlobalKey galleryKey = GlobalKey();
     GlobalKey musicKey = GlobalKey();
     GlobalKey storeKey = GlobalKey();
+    GlobalKey contactKey = GlobalKey();
 
     return Scaffold(
       floatingActionButton: const EFloatingActionButton(),
@@ -74,35 +79,10 @@ class DesktopLayout extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
-                          flex: 1,
+                          flex: 3,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              // /// --- HOME NAVIGATION --- ///
-                              // HoverButton(
-                              //   onpressed: () {
-                              //     Scrollable.ensureVisible(
-                              //       homeKey.currentContext!,
-                              //       duration: const Duration(milliseconds: 500),
-                              //       curve: Curves.easeInOut,
-                              //       alignment: 1.0,
-                              //     );
-                              //   },
-                              //   textColor: EColors.secondary,
-                              //   hoverTextColor: EColors.accent,
-                              //   padding: EdgeInsets.zero,
-                              //   hoverPadding: EdgeInsets.zero,
-                              //   child: const Text(
-                              //     EText.home,
-                              //     textAlign: TextAlign.center,
-                              //     style: TextStyle(
-                              //         fontSize: ESizes.fontSizeHeadline),
-                              //   ),
-                              // ),
-                              // const SizedBox(
-                              //   width: ESizes.spaceBtwSections,
-                              // ),
-
                               /// --- ABOUT NAVIGATION --- ///
                               HoverButton(
                                 onpressed: () {
@@ -195,7 +175,7 @@ class DesktopLayout extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                            flex: 1,
+                            flex: 3,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -205,30 +185,30 @@ class DesktopLayout extends StatelessWidget {
                                 ),
 
                                 /// --- STORE NAVIGATION --- ///
-                                HoverButton(
-                                  onpressed: () {
-                                    Scrollable.ensureVisible(
-                                      storeKey.currentContext!,
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeInOut,
-                                      alignment: 0.5,
-                                    );
-                                  },
-                                  textColor: EColors.secondary,
-                                  hoverTextColor: EColors.accent,
-                                  padding: EdgeInsets.zero,
-                                  hoverPadding: EdgeInsets.zero,
-                                  child: const Text(
-                                    EText.store,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: ESizes.fontSizeHeadline),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: ESizes.spaceBtwSections,
-                                ),
+                                // HoverButton(
+                                //   onpressed: () {
+                                //     Scrollable.ensureVisible(
+                                //       storeKey.currentContext!,
+                                //       duration:
+                                //           const Duration(milliseconds: 500),
+                                //       curve: Curves.easeInOut,
+                                //       alignment: 0.5,
+                                //     );
+                                //   },
+                                //   textColor: EColors.secondary,
+                                //   hoverTextColor: EColors.accent,
+                                //   padding: EdgeInsets.zero,
+                                //   hoverPadding: EdgeInsets.zero,
+                                //   child: const Text(
+                                //     EText.store,
+                                //     textAlign: TextAlign.center,
+                                //     style: TextStyle(
+                                //         fontSize: ESizes.fontSizeHeadline),
+                                //   ),
+                                // ),
+                                // const SizedBox(
+                                //   width: ESizes.spaceBtwSections,
+                                // ),
 
                                 /// --- MUSIC NAVIGATION --- ///
                                 HoverButton(
@@ -252,6 +232,32 @@ class DesktopLayout extends StatelessWidget {
                                         fontSize: ESizes.fontSizeHeadline),
                                   ),
                                 ),
+                                const SizedBox(
+                                  width: ESizes.spaceBtwSections,
+                                ),
+
+                                /// --- CONTACT NAVIGATION --- ///
+                                HoverButton(
+                                  onpressed: () {
+                                    Scrollable.ensureVisible(
+                                      contactKey.currentContext!,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut,
+                                      alignment: 0.5,
+                                    );
+                                  },
+                                  textColor: EColors.secondary,
+                                  hoverTextColor: EColors.accent,
+                                  padding: EdgeInsets.zero,
+                                  hoverPadding: EdgeInsets.zero,
+                                  child: const Text(
+                                    EText.contact,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: ESizes.fontSizeHeadline),
+                                  ),
+                                ),
                               ],
                             ))
                       ],
@@ -261,10 +267,12 @@ class DesktopLayout extends StatelessWidget {
               ),
             ),
           ),
+
           SliverToBoxAdapter(
             key: homeKey,
             child: const HeroScreen(),
           ),
+
           SliverToBoxAdapter(
             key: aboutKey,
             child: const AboutScreen(),
@@ -297,10 +305,6 @@ class DesktopLayout extends StatelessWidget {
             child: GalleryScreen(),
           ),
 
-          SliverToBoxAdapter(
-            child: SizedBox(
-                height: 400, width: width, child: const ContactScreen()),
-          ),
           // SliverToBoxAdapter(
           //   key: storeKey,
           //   child: const StoreScreen(),
@@ -308,6 +312,10 @@ class DesktopLayout extends StatelessWidget {
           SliverToBoxAdapter(
             key: musicKey,
             child: const MusicScreen(),
+          ),
+          SliverToBoxAdapter(
+            key: contactKey,
+            child: const ContactScreen(),
           ),
         ],
       ),

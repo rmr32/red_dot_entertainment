@@ -45,6 +45,11 @@ class EIcons {
   static const Icon shuffle = Icon(FontAwesomeIcons.shuffle);
   static const Icon loop = Icon(FontAwesomeIcons.repeat);
 
+  /// --- Form Icons --- ///
+  static const Icon user = Icon(FontAwesomeIcons.solidUser);
+  static const Icon email = Icon(FontAwesomeIcons.solidEnvelope);
+  static const Icon reason = Icon(FontAwesomeIcons.question);
+
   /// ------------------------------------------------------------------ ///
   /// --- Animations --- ///
   ///

@@ -1,101 +1,92 @@
-import 'package:red_dot_entertainment/common/controllers/navigation_controller.dart';
-import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hovering/hovering.dart';
+import 'package:lottie/lottie.dart';
+import 'package:red_dot_entertainment/common/controllers/scroll_controller.dart';
+import 'package:red_dot_entertainment/common/widgets/appbar/appbar.dart';
+import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart';
+import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
 import 'package:red_dot_entertainment/common/widgets/fab/floating_action_button.dart';
+import 'package:red_dot_entertainment/features/about/about_screen.dart';
+import 'package:red_dot_entertainment/features/contact/contact_screen.dart';
+import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
+import 'package:red_dot_entertainment/features/home/hero_screen.dart';
+import 'package:red_dot_entertainment/features/home/widgets/hero_video.dart';
+import 'package:red_dot_entertainment/features/music/music_screen.dart';
+import 'package:red_dot_entertainment/features/store/store_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/device/device_utility.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:widget_mask/widget_mask.dart';
 
-class TabletLayout extends StatefulWidget {
+class TabletLayout extends StatelessWidget {
   const TabletLayout({super.key});
 
   @override
-  State<TabletLayout> createState() => _TabletLayoutState();
-}
-
-class _TabletLayoutState extends State<TabletLayout> {
-  @override
   Widget build(BuildContext context) {
-    final controller = NavigationController.instance;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        double height = EDeviceUtils.getScreenHeight();
-        double width = EDeviceUtils.getScreenWidth();
-        return Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
-          // floatingActionButton: const EFloatingActionButton(),
-          body: Container(
-            constraints: const BoxConstraints.expand(),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                    EColors.primary.withOpacity(EStyle.colorBlockOpacity),
-                    BlendMode.darken),
-                image: const AssetImage(EImages.bg),
-                fit: BoxFit.cover,
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    final controller = CustomScrollController.instance;
+
+    return ScrollTransformView(
+      children: [
+        ScrollTransformItem(
+          builder: (scrollOffset) {
+            final offScreenPercentage = min(scrollOffset / height, 1.0);
+            return Image.asset(
+              height: height - (height * 0.2 * offScreenPercentage),
+              width: width - (width * 0.5 * offScreenPercentage),
+              EImages.bg,
+              fit: BoxFit.cover,
+            );
+          },
+          offsetBuilder: (scrollOffset) {
+            final offScreenPercentage = min(scrollOffset / height, 1.0);
+            final heightShrinkageAmount = height * 0.2 * offScreenPercentage;
+            final bool startMovingImage = scrollOffset >= height;
+            final double onScreenOffset =
+                scrollOffset + heightShrinkageAmount / 2;
+            return Offset(
+              0,
+              !startMovingImage
+                  ? onScreenOffset
+                  : onScreenOffset - (scrollOffset - height * 0.8),
+            );
+          },
+        ),
+        ScrollTransformItem(
+          builder: (scrollOffset) {
+            return SizedBox(
+              height: height,
+              child: Center(
+                child: Text(
+                  'yo EVERJOKANMOVMOASDKFO',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: EColors.secondary),
+                ),
               ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// --- Navigation --- ///
-                const Expanded(
-                  flex: 2,
-                  child: EDrawer(isRounded: false),
-                ),
-
-                /// --- Content --- ///
-                Expanded(
-                  flex: 6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        color: EColors.tertiary
-                            .withOpacity(EStyle.colorBlockOpacity),
-                        height: height,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Obx(
-                                  () {
-                                    switch (controller.currentPage.value) {
-                                      // case 0:
-                                      //   return const HomeScreen();
-                                      // case 1:
-                                      //   return const AboutScreen2();
-
-                                      // case 2:
-                                      //   return const PricingScreen();
-                                      // case 3:
-                                      //   return const PlayerScreen();
-                                      // case 4:
-                                      //   return GalleryScreen();
-                                      // case 5:
-                                      //   return const ReservationScreen();
-                                      default:
-                                        return Container();
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+            );
+          },
+          offsetBuilder: (scrollOffset) => Offset(0, -height),
+        ),
+        ScrollTransformItem(
+          builder: (scrollOffset) {
+            return Image.asset(
+              height: height,
+              width: width,
+              EImages.studio1,
+              fit: BoxFit.cover,
+            );
+          },
+          // offsetBuilder: (scrollOffset) => Offset(0, scrollOffset),
+        ),
+      ],
     );
   }
 }

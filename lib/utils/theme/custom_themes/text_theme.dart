@@ -80,14 +80,14 @@ class ETextTheme {
 
     bodyMedium: bodyFont(
       textStyle: const TextStyle().copyWith(
-          fontSize: 14,
+          fontSize: 20,
           fontWeight: FontWeight.w300,
           color: EColors.textPrimary),
     ),
 
     bodySmall: bodyFont(
       textStyle: const TextStyle().copyWith(
-          fontSize: 10,
+          fontSize: 16,
           fontWeight: FontWeight.w100,
           color: EColors.textPrimary),
     ),

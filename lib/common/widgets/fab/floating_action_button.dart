@@ -1,6 +1,7 @@
 import 'package:animated_expandable_fab/animated_expandable_fab.dart';
 
 import 'package:red_dot_entertainment/common/widgets/icons/on_hover_icon.dart';
+import 'package:red_dot_entertainment/features/contact/widgets/subscribe_form.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/device/device_utility.dart';
 import 'package:red_dot_entertainment/utils/popups/loaders.dart';
@@ -69,7 +70,11 @@ class EFloatingActionButton extends StatelessWidget {
         /// --- NEWSLETTER --- ///
         ActionButton(
           onPressed: () {
-            ELoaders.showForm();
+            ELoaders.customForm(
+                content: ESubscribeForm(
+              title: EText.formSubscribe.toUpperCase(),
+              subTitle: EText.formSubscribeSubtitle,
+            ));
           },
           padding: EdgeInsets.zero,
           color: Colors.transparent,

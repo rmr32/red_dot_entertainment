@@ -1,6 +1,6 @@
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/device/device_utility.dart';
-import 'package:red_dot_entertainment/utils/helpers.dart/helper_functions.dart';
+import 'package:red_dot_entertainment/utils/helpers/helper_functions.dart';
 
 class EAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Custom appbar for achieving a desired design goal.

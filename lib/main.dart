@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:red_dot_entertainment/bindings/general_bindings.dart';
+import 'package:red_dot_entertainment/data/repositories/authentication/authentication_repository.dart';
 import 'package:red_dot_entertainment/routes/app_routes.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/theme/theme.dart';
@@ -28,6 +29,8 @@ void main() async {
       retryAttempts: 10,
     ),
   );
+  Get.put(AuthenticationRepository());
+  // ).then( ()=> Get.put(AuthenticationRepository()));
 
   /// -- Overcome from transparent spaces at the bottom in iOS full Mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
@@ -35,8 +38,8 @@ void main() async {
   runApp(const MyApp());
 }
 
-// Get a reference your Supabase client
-final supabase = Supabase.instance.client;
+// // Get a reference your Supabase client
+// final supabase = Supabase.instance.client;
 
 // For using scrollable list
 class CustomScrollBehavior extends MaterialScrollBehavior {

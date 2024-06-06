@@ -10,9 +10,12 @@ class EImages {
   static const String logoWhite = "assets/logos/logo_white.png";
   static const String logoBlack = "assets/images/logo_black.png";
 
-  static const String abstract1 = "assets/images/abstract1.png";
-  static const String bg = 'assets/images/studio6.jpg';
-  static const String hero = 'assets/video/hero.mp4';
+  static const String videoHero = 'assets/video/hero.mp4';
+
+  /// --- SITE IMAGES --- ///
+  static const String bgAbout = 'assets/images/red_texas.svg';
+  static const String bgForm = 'assets/images/studio6.jpg';
+  static const String bgAbout2 = 'assets/images/layered_wave.gif';
 
   /// --- Gallery Images --- ///
   static const String studio1 = "assets/images/studio4.jpg";
@@ -145,22 +148,4 @@ class EImages {
   ///
   ///
   /// --- ICONS --- ///
-
-  ///
-  ///
-  /// --- ANIMATIONS --- ///
-  static const String animationLoadingInformation =
-      'assets/images/animations/loading_information.json';
-  static const String animationSuccessfulAnimation =
-      'assets/images/animations/loading_information.json';
-  static const String animationDocer =
-      'assets/images/animations/loading_information.json';
-  static const String animationCloudUploading =
-      'assets/images/animations/loading_information.json';
-  static const String animationOrderProcessing =
-      'assets/images/animations/loading_information.json';
-  static const String animationOrderCompleted =
-      'assets/images/animations/loading_information.json';
-  static const String animationCartEmpty =
-      'assets/images/animations/loading_information.json';
 }

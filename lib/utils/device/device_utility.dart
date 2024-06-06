@@ -34,11 +34,13 @@ class EDeviceUtils {
   }
 
   static double getScreenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
+    return MediaQuery.sizeOf(Get.context!).height;
+    // return MediaQuery.of(Get.context!).size.height;
   }
 
   static double getScreenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+    return MediaQuery.sizeOf(Get.context!).width;
+    // return MediaQuery.of(Get.context!).size.width;
   }
 
   static double getPixelRatio() {

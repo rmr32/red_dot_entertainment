@@ -1,4 +1,4 @@
-import 'package:red_dot_entertainment/data/subscribers/subscriber_repository.dart';
+import 'package:red_dot_entertainment/data/repositories/subscriber/subscriber_repository.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 import 'package:red_dot_entertainment/utils/popups/full_screen_loader.dart';
 import 'package:red_dot_entertainment/utils/popups/loaders.dart';
@@ -7,10 +7,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class SubscribeController extends GetxController {
   static SubscribeController get instance => Get.find();
 
-  final email = TextEditingController(); // --- Controller for email input
+  /// --- Variables --- ///
+  final email = TextEditingController();
 
-  GlobalKey<FormState> subscribeFormKey =
-      GlobalKey<FormState>(); // Form key for form validation
+  GlobalKey<FormState> subscribeFormKey = GlobalKey<FormState>();
 
   void joinSubscription(String email) async {
     try {

@@ -12,16 +12,14 @@ import 'package:red_dot_entertainment/common/widgets/containers/custom_card.dart
 import 'package:red_dot_entertainment/common/widgets/drawer/drawer.dart';
 import 'package:red_dot_entertainment/common/widgets/drawer/widgets/nav_list_tiles.dart';
 import 'package:red_dot_entertainment/common/widgets/fab/floating_action_button.dart';
-import 'package:red_dot_entertainment/features/about/about_screen.dart';
-import 'package:red_dot_entertainment/features/contact/contact_screen.dart';
-import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
-import 'package:red_dot_entertainment/features/home/hero_screen.dart';
+import 'package:red_dot_entertainment/features/about/screens/about_screen.dart';
+import 'package:red_dot_entertainment/features/contact/screens/contact_screen.dart';
+import 'package:red_dot_entertainment/features/gallery/screens/gallery_screen.dart';
+import 'package:red_dot_entertainment/features/home/screens/hero_screen.dart';
 import 'package:red_dot_entertainment/features/home/widgets/hero_video.dart';
-import 'package:red_dot_entertainment/features/music/music_screen.dart';
-import 'package:red_dot_entertainment/features/store/store_screen.dart';
+import 'package:red_dot_entertainment/features/music/screens/music_screen.dart';
+import 'package:red_dot_entertainment/features/store/screens/store_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
-import 'package:red_dot_entertainment/utils/device/device_utility.dart';
-import 'package:widget_mask/widget_mask.dart';
 
 class MobileLayout extends StatelessWidget {
   const MobileLayout({super.key});

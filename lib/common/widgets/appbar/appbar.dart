@@ -50,7 +50,7 @@ class EAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Get.back(),
                 icon: Icon(Icons.arrow_back,
                     color: leadingIconColor ??
-                        (dark ? EColors.textWhite : EColors.backgroundDark)))
+                        (dark ? EColors.textWhite : EColors.textWhite)))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

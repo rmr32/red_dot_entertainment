@@ -8,8 +8,10 @@ class CustomScrollController extends GetxController {
   final ScrollController _scrollController = ScrollController();
   final NavigationController _navController = Get.find();
   final RxDouble scrollPosition = 0.0.obs;
+
   // final GlobalKey targetKey = GlobalKey();
   final RxBool target = false.obs;
+  final RxBool isScrollingDown = true.obs;
 
   /// --- Getters --- ///
   ScrollController get scrollController => _scrollController;
@@ -23,21 +25,40 @@ class CustomScrollController extends GetxController {
   }
 
   void _updateScrollPosition() {
-    _scrollController.addListener(_scrollListener);
+    // _scrollController.addListener(_scrollListener);
     // scrollController.position.addListener((_scrollListener) {});
   }
 
   void _scrollListener() {
     // Check if the target key is visible on the screen
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (isTargetKeyVisible()) {
-        // Do something when scrolled to the target key
-        print('Scrolled to the target key!');
-      }
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   if (isTargetKeyVisible()) {
+    //     // Do something when scrolled to the target key
+    //     print('Scrolled to the target key!');
+    //     print(_scrollController.position.userScrollDirection);
+    //   }
+    // });
+    // updateScroll();
+
+    // if (_scrollController.position.userScrollDirection ==
+    //     ScrollDirection.forward) {
+    //   isScrollingDown.value = true;
+    // } else {
+    //   isScrollingDown.value = false;
+    // }
     // Do something when scroll position changes
-    scrollPosition.value = _scrollController.position.pixels;
-    print('Scroll position: $scrollPosition');
+    // scrollPosition.value = _scrollController.position.pixels;
+    // print('Scroll position: $scrollPosition');
+  }
+  void updateScroll(double offset) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollPosition.value >= offset) {
+        isScrollingDown.value = true;
+      } else {
+        isScrollingDown.value = false;
+      }
+      scrollPosition.value = offset;
+    });
   }
 
   bool isTargetKeyVisible() {

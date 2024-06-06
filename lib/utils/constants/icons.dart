@@ -10,6 +10,14 @@ class EIcons {
   ///
 
   /// --- Social Media Icons --- ///
+  static const Icon facebook = Icon(
+    FontAwesomeIcons.facebook,
+    color: EColors.secondary,
+  );
+  static const Icon google = Icon(
+    FontAwesomeIcons.google,
+    color: EColors.secondary,
+  );
   static const Icon twitch = Icon(FontAwesomeIcons.twitch);
   static const Icon twitchHover = Icon(
     FontAwesomeIcons.twitch,

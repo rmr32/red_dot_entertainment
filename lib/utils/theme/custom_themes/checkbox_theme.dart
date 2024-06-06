@@ -4,7 +4,7 @@ class ECheckboxTheme {
   ECheckboxTheme._();
 
   static CheckboxThemeData lightCheckBoxTheme = CheckboxThemeData(
-    side: const BorderSide(color: EColors.buttonPrimary),
+    side: const BorderSide(color: EColors.buttonSecondary, width: 2),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(ESizes.cardRadiusXs)),
     checkColor: MaterialStateProperty.resolveWith((states) {

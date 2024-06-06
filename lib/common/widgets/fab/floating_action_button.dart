@@ -70,8 +70,8 @@ class EFloatingActionButton extends StatelessWidget {
         /// --- NEWSLETTER --- ///
         ActionButton(
           onPressed: () {
-            ELoaders.customForm(
-                content: ESubscribeForm(
+            ELoaders.customDialog(
+                child: ESubscribeForm(
               title: EText.formSubscribe.toUpperCase(),
               subTitle: EText.formSubscribeSubtitle,
             ));

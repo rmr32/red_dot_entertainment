@@ -64,7 +64,7 @@ class HeroScreen extends StatelessWidget {
                   child: Transform.scale(
                 scale: width > ESizes.mobile ? 1.5 : 1,
                 // child: const HeroVideo(),
-                // child: const SizedBox(),
+                child: const SizedBox(),
               )),
             ),
           ),

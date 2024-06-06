@@ -15,12 +15,12 @@ class ECardGlass extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
         child: Container(
           decoration: BoxDecoration(
-            image: const DecorationImage(
-              fit: BoxFit.cover,
-              opacity: 0.025,
-              image: NetworkImage(
-                  'https://img.freepik.com/free-photo/glass-background-with-frosted-pattern_53876-132924.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=ais'),
-            ),
+            // image: const DecorationImage(
+            //   fit: BoxFit.cover,
+            //   opacity: 0.025,
+            //   image: NetworkImage(
+            //       'https://img.freepik.com/free-photo/glass-background-with-frosted-pattern_53876-132924.jpg?size=626&ext=jpg&ga=GA1.1.553209589.1714435200&semt=ais'),
+            // ),
             boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(0.3),

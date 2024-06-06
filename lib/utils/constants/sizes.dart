@@ -16,7 +16,7 @@ class ESizes {
   static const double headerCircleTwoRight = -300;
 
   /// --- Responsive Sizes --- ///
-  static const double mobile = 675;
+  static const double mobile = 700;
   static const double tablet = 1185;
 
   /// --- Elevation Sizes ---///

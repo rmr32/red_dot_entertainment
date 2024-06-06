@@ -6,7 +6,8 @@ class AboutPrimary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = EDeviceUtils.getScreenWidth();
+    final isMobile = width < ESizes.mobile;
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -14,7 +15,7 @@ class AboutPrimary extends StatelessWidget {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: EDeviceUtils.getScreenWidth() > ESizes.mobile
+                style: isMobile
                     ? Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: EColors.secondary,
                         )

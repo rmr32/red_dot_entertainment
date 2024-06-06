@@ -1,5 +1,3 @@
-import 'package:red_dot_entertainment/common/controllers/scroll_controller.dart';
-import 'package:red_dot_entertainment/features/gallery/gallery_screen.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 
 class NavigationController extends GetxController {

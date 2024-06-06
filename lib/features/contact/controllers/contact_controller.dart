@@ -1,4 +1,4 @@
-import 'package:red_dot_entertainment/data/contact/contact_repository.dart';
+import 'package:red_dot_entertainment/data/repositories/contact/contact_repository.dart';
 import 'package:red_dot_entertainment/utils/constants/exports.dart';
 
 import 'package:red_dot_entertainment/utils/popups/loaders.dart';
@@ -6,6 +6,7 @@ import 'package:red_dot_entertainment/utils/popups/loaders.dart';
 class ContactController extends GetxController {
   static ContactController get instance => Get.find();
 
+  /// --- Variables --- ///
   final firstName = TextEditingController();
   final lastName = TextEditingController();
   final email = TextEditingController();
